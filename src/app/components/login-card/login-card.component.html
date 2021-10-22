@@ -1,26 +1,36 @@
-<form class="row g-2 needs-validation shadow-lg p-3 mt-lg-3 bg-body rounded"
-     name="loginForm" [formGroup]="valideLogin" (ngSubmit)="sendLogin()" novalidate>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <div class="col-md-6">
+  <link rel="bootstrap.min.css" href="../../../../node_modules/bootstrap/dist/css/">
+
+  <title>Login Form</title>
+</head>
+<body>
+  <form class="row g-2 needs-validation shadow-lg p-3 mt-lg-4 bg-body rounded"
+     name="loginForm"
+     [formGroup]="valideLogin"
+     (ngSubmit)="sendLogin()"
+     needs-validation novalidate>
+  <div class="col-md-10">
     <label for="email"
            class="form-label">Dirección de correo</label>
-    <div class="input-group has-validation">
+    <div class="input-group">
       <span class="input-group-text"
             id="email">@</span>
       <input name="email"
              id="email"
              type="text"
-             class="form-control"
+             class="form-control col-md-4"
              formControlName="email"
              placeholder="micorreo@dominio.com"
              required>
-      <div class="invalid-feedback">
-        Please choose a username.
-      </div>
     </div>
   </div>
-
-  <div class="col-md-6">
+  <div class="col-md-10">
     <label for="password"
            class="form-label">Contraseña</label>
     <input id="password"
@@ -30,17 +40,14 @@
            formControlName="password"
            placeholder="Introduce tu contraseña"
            required>
-    <div class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
   </div>
-
-
-  <div class="col-8">
-    <button class="btn btn-primary mx-2" type="submit">Login</button>
+  <div class="col-4" >
+    <div><button type="submit" class="btn btn-primary mx-2" >Login</button></div>
     <button class="btn btn-primary mx-2">Registrar</button>
   </div>
 </form>
+</body>
+</html>
 
 
 <!--https://es.calcuworld.com/deporte-y-ejercicio/calculadora-de-tiempos-carreras/-->

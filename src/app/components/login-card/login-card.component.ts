@@ -19,8 +19,8 @@ export class LoginCardComponent implements OnInit {
 
 
   valideLogin = this.fb.group({
-    email: ['', Validators.required, Validators.email],
-    password: ['', Validators.required, Validators.min(8)]
+    email: ['',  Validators.email],
+    password: ['',  Validators.minLength(8)]
   })
 
   ngOnInit(): void {
