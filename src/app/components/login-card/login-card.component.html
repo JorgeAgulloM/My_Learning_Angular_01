@@ -1,26 +1,46 @@
-<form class="row g-2 needs-validation shadow-lg p-3 mt-lg-3 bg-body rounded" novalidate>
+<form class="row g-2 needs-validation shadow-lg p-3 mt-lg-3 bg-body rounded"
+     name="loginForm" [formGroup]="valideLogin" (ngSubmit)="sendLogin()" novalidate>
 
-  <div class="col-md-7">
-    <label for="email" class="form-label">Dirección de correo</label>
+  <div class="col-md-6">
+    <label for="email"
+           class="form-label">Dirección de correo</label>
     <div class="input-group has-validation">
-      <span class="input-group-text" id="email">@</span>
-      <input type="text" class="form-control" id="email" placeholder="micorreo@dominio.com" required>
+      <span class="input-group-text"
+            id="email">@</span>
+      <input name="email"
+             id="email"
+             type="text"
+             class="form-control"
+             formControlName="email"
+             placeholder="micorreo@dominio.com"
+             required>
       <div class="invalid-feedback">
         Please choose a username.
       </div>
     </div>
   </div>
 
-  <div class="col-md-7">
-    <label for="password" class="form-label">Contraseña</label>
-    <input type="text" class="form-control" id="password" placeholder="Introduce tu contraseña" required>
+  <div class="col-md-6">
+    <label for="password"
+           class="form-label">Contraseña</label>
+    <input id="password"
+           name="password"
+           type="text"
+           class="form-control"
+           formControlName="password"
+           placeholder="Introduce tu contraseña"
+           required>
     <div class="invalid-feedback">
       Please provide a valid zip.
     </div>
   </div>
 
-  <div class="col-12">
+
+  <div class="col-8">
     <button class="btn btn-primary mx-2" type="submit">Login</button>
     <button class="btn btn-primary mx-2">Registrar</button>
   </div>
 </form>
+
+
+<!--https://es.calcuworld.com/deporte-y-ejercicio/calculadora-de-tiempos-carreras/-->

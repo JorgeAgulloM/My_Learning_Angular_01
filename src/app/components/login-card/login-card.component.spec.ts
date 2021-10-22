@@ -1,5 +1,5 @@
+import { LoginForm } from 'src/app/models/loginForm';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LoginCardComponent } from './login-card.component';
 
 describe('LoginCardComponent', () => {
@@ -8,7 +8,7 @@ describe('LoginCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LoginCardComponent ]
+      declarations: [ LoginCardComponent, LoginForm ]
     })
     .compileComponents();
   });
