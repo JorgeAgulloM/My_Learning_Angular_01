@@ -4,14 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PipesPipe } from './pipes.pipe';
-import { PasswordPipe } from './pipes/password.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PipesPipe,
-    PasswordPipe
+    AppComponent
+
   ],
   imports: [
     BrowserModule,
