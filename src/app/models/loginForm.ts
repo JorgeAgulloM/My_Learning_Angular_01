@@ -1,6 +1,6 @@
 export class LoginForm{
 
-  private _email: string;
+  private _email: string
   private _password: string
 
   constructor(

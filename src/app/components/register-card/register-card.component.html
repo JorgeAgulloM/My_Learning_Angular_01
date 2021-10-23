@@ -1,143 +1,183 @@
-<form class="row g-2 needs-validation shadow-lg p-3 mt-lg-3 bg-body rounded" name="formRegister">
-  <div class="col-md-6">
-    <label for="name" class="form-label">Nombre</label>
-    <input
-      type="text"
-      class="form-control"
-      id="name"
-      placeholder="Nombre"
-      required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="lastName" class="form-label">Apellidos</label>
-    <input type="text" class="form-control" id="lastName" placeholder="Apellidos" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="phoneNumber" class="form-label">Teléfono</label>
-    <input type="number" class="form-control" id="phoneNumber" placeholder="Télefono" required>
-    <div class="valid-feedback">
-      Looks good!
-    </div>
-  </div>
-  <div class="col-md-6">
-    <label for="email" class="form-label">Dirección de correo</label>
-    <div class="input-group has-validation">
-      <span class="input-group-text" id="email">@</span>
-      <input type="text" class="form-control" id="email" placeholder="micorreo@dominio.com" required>
-      <div class="invalid-feedback">
-        Please choose a username.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheets" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  
+  <title>Register Form</title>
+</head>
+<body>
+  <div class="d-flex row g-2 needs-validation shadow-lg p-3 mt-lg-3 bg-body rounded">
+    <form class="row" 
+          [formGroup]="valideRegister"
+          (ngSubmit)="this.sendRegister()" 
+          name="formRegister">
+      <div class="col-md-6">
+        <label for="name" 
+              class="form-label">Nombre</label>
+        <input
+              type="text"
+              class="form-control"
+              name="name"
+              formControlName="name"
+              placeholder="Nombre"
+              required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
-    </div>
-  </div>
-  <div class="col-md-12">
-    <label for="address" class="form-label">Dirección</label>
-    <input type="text" class="form-control" id="address" placeholder="C/ de la Providencia, n 7 3º" required>
-    <div class="invalid-feedback">
-      Please provide a valid city.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <label for="city" class="form-label">Ciudad</label>
-    <input type="text" class="form-control" id="city" placeholder="Madrid" required>
-    <div class="invalid-feedback">
-      Please provide a valid city.
-    </div>
-  </div>
-  <div class="col-md-4">
-    <label for="state" class="form-label">Provincia</label>
-    <select class="form-select" id="state" required>
-      <option selected disabled value="">Selecciona...</option>
-      <option value="">- selecciona -</option>
-                    <option value="15">A coru&#241;a</option>
-                    <option value="1">&#193;lava</option>
-                    <option value="2">Albacete</option>
-                    <option value="3">Alicante</option>
-                    <option value="4">Almer&#237;a</option>
-                    <option value="33">Asturias</option>
-                    <option value="5">&#193;vila</option>
-                    <option value="6">Badajoz</option>
-                    <option value="7">Baleares</option>
-                    <option value="8">Barcelona</option>
-                    <option value="9">Burgos</option>
-                    <option value="10">C&#225;ceres</option>
-                    <option value="11">C&#225;diz</option>
-                    <option value="39">Cantabria</option>
-                    <option value="12">Castell&#243;n</option>
-                    <option value="51">Ceuta</option>
-                    <option value="13">Ciudad Real</option>
-                    <option value="14">C&#243;rdoba</option>
-                    <option value="16">Cuenca</option>
-                    <option value="99">Extranjero</option>
-                    <option value="17">Girona</option>
-                    <option value="18">Granada</option>
-                    <option value="19">Guadalajara</option>
-                    <option value="20">Guip&#250;zcoa</option>
-                    <option value="21">Huelva</option>
-                    <option value="22">Huesca</option>
-                    <option value="23">Ja&#233;n</option>
-                    <option value="26">La rioja</option>
-                    <option value="35">Las palmas</option>
-                    <option value="24">Le&#243;n</option>
-                    <option value="25">Lleida</option>
-                    <option value="27">Lugo</option>
-                    <option value="28">Madrid</option>
-                    <option value="29">M&#225;laga</option>
-                    <option value="52">Melilla</option>
-                    <option value="30">Murcia</option>
-                    <option value="31">Navarra</option>
-                    <option value="32">Ourense</option>
-                    <option value="34">Palencia</option>
-                    <option value="36">Pontevedra</option>
-                    <option value="37">Salamanca</option>
-                    <option value="38">Santa cruz de tenerife</option>
-                    <option value="40">Segovia</option>
-                    <option value="41">Sevilla</option>
-                    <option value="42">Soria</option>
-                    <option value="43">Tarragona</option>
-                    <option value="44">Teruel</option>
-                    <option value="45">Toledo</option>
-                    <option value="46">Valencia</option>
-                    <option value="47">Valladolid</option>
-                    <option value="48">Vizcaya</option>
-                    <option value="49">Zamora</option>
-                    <option value="50">Zaragoza</option>
-    </select>
-    <div class="invalid-feedback">
-      Please select a valid state.
-    </div>
-  </div>
-  <div class="col-md-7">
-    <label for="password" class="form-label">Contraseña</label>
-    <input type="text" class="form-control" id="password" placeholder="Debes usar mínimo 8 caracteres" required>
-    <div class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
-  </div>
-  <div class="col-md-7">
-    <label for="confirmPassword" class="form-label">Repite la contraseña</label>
-    <input type="text" class="form-control" id="confirmPassword" placeholder="Por favor, repite la contraseña" required>
-    <div class="invalid-feedback">
-      Please provide a valid zip.
-    </div>
-  </div>
-  <div class="col-12">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-      <label class="form-check-label" for="invalidCheck">
-        Acepto las condiciones de registro.
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
+      <div class="col-md-6">
+        <label for="lastName" 
+              class="form-label">Apellidos</label>
+        <input type="text" 
+              class="form-control" 
+              name="lastName"
+              formControlName="lastName" 
+              placeholder="Apellidos" 
+              required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
       </div>
-    </div>
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Teléfono</label>
+        <input type="number" class="form-control" name="phone" formControlName="phone" placeholder="Télefono" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="email" class="form-label">Dirección de correo</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="email">@</span>
+          <input type="text" class="form-control" name="email" formControlName="email" placeholder="micorreo@dominio.com" required>
+          <div class="invalid-feedback">
+            Please choose a username.
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="address" class="form-label">Dirección</label>
+        <input type="text" class="form-control" name="address" placeholder="C/ de la Providencia, n 7 3º">
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="city" class="form-label">Ciudad</label>
+        <input type="text" class="form-control" name="city" placeholder="Madrid">
+        <div class="invalid-feedback">
+          Please provide a valid city.
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="state" class="form-label">Provincia</label>
+        <select class="form-select" name="state">
+          <option selected disabled value="">Selecciona...</option>
+          <option value="">- selecciona -</option>
+                        <option value="15">A coru&#241;a</option>
+                        <option value="1">&#193;lava</option>
+                        <option value="2">Albacete</option>
+                        <option value="3">Alicante</option>
+                        <option value="4">Almer&#237;a</option>
+                        <option value="33">Asturias</option>
+                        <option value="5">&#193;vila</option>
+                        <option value="6">Badajoz</option>
+                        <option value="7">Baleares</option>
+                        <option value="8">Barcelona</option>
+                        <option value="9">Burgos</option>
+                        <option value="10">C&#225;ceres</option>
+                        <option value="11">C&#225;diz</option>
+                        <option value="39">Cantabria</option>
+                        <option value="12">Castell&#243;n</option>
+                        <option value="51">Ceuta</option>
+                        <option value="13">Ciudad Real</option>
+                        <option value="14">C&#243;rdoba</option>
+                        <option value="16">Cuenca</option>
+                        <option value="99">Extranjero</option>
+                        <option value="17">Girona</option>
+                        <option value="18">Granada</option>
+                        <option value="19">Guadalajara</option>
+                        <option value="20">Guip&#250;zcoa</option>
+                        <option value="21">Huelva</option>
+                        <option value="22">Huesca</option>
+                        <option value="23">Ja&#233;n</option>
+                        <option value="26">La rioja</option>
+                        <option value="35">Las palmas</option>
+                        <option value="24">Le&#243;n</option>
+                        <option value="25">Lleida</option>
+                        <option value="27">Lugo</option>
+                        <option value="28">Madrid</option>
+                        <option value="29">M&#225;laga</option>
+                        <option value="52">Melilla</option>
+                        <option value="30">Murcia</option>
+                        <option value="31">Navarra</option>
+                        <option value="32">Ourense</option>
+                        <option value="34">Palencia</option>
+                        <option value="36">Pontevedra</option>
+                        <option value="37">Salamanca</option>
+                        <option value="38">Santa cruz de tenerife</option>
+                        <option value="40">Segovia</option>
+                        <option value="41">Sevilla</option>
+                        <option value="42">Soria</option>
+                        <option value="43">Tarragona</option>
+                        <option value="44">Teruel</option>
+                        <option value="45">Toledo</option>
+                        <option value="46">Valencia</option>
+                        <option value="47">Valladolid</option>
+                        <option value="48">Vizcaya</option>
+                        <option value="49">Zamora</option>
+                        <option value="50">Zaragoza</option>
+        </select>
+        <div class="invalid-feedback">
+          Please select a valid state.
+        </div>
+      </div>
+      <div class="col-md-7">
+        <label for="password" class="form-label">Contraseña</label>
+        <input type="text" class="form-control" name="password" formControlName="password" placeholder="Debes usar mínimo 8 caracteres" required>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col-md-7">
+        <label for="rePassword" class="form-label">Repite la contraseña</label>
+        <input type="text" class="form-control" name="rePassword" formControlName="rePassword" placeholder="Por favor, repite la contraseña" required>
+        <div class="invalid-feedback">
+          Please provide a valid zip.
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" name="conditions" formControlName="conditions" required>
+          <label class="form-check-label" for="invalidCheck">
+            Acepto las condiciones de registro.
+          </label>
+          <div class="invalid-feedback">
+            You must agree before submitting.
+          </div>
+        </div>
+      </div>
+      <div class="col-12"> 
+        <label *ngIf="!this.valideRegister.valid" 
+              for="error" 
+              class="form-label alert alert-warning col-md-12" 
+              role="alert">
+              Por favor, cumplimente correctamente todos los campos para proceder al login.
+              Si no es usuario registrado, pulse Registrar.
+       </label>
+        <label *ngIf="this.valideRegister.valid" 
+              for="ok" 
+              class="fomr-label alert alert-success col-md-12" 
+              rol="alert">
+              Pulsa en el botón Login para acceder a tu usuario. Gracias.
+       </label>
+        <button [disabled]="!this.valideRegister.valid" class="btn btn-primary" type="submit">Registrar</button>
+      </div>
+    </form>
   </div>
-  <div class="col-12">
-    <button class="btn btn-primary" type="submit">Registrar</button>
-  </div>
-</form>
+</body>
+</html>
