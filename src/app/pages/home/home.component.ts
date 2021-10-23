@@ -16,23 +16,23 @@ export class HomeComponent   {
    }
 
   public getShowLogin(): boolean {
-    console.log("GetLogin " + this.showLogin)
+    console.log("home.GetLogin " + this.showLogin)
     return this.showLogin
   }
 
   public setShowLogin(): void {
-    console.log("SetLogin " + this.showLogin)
+    console.log("home.SetLogin " + this.showLogin)
     this.showRegister = false
     this.showLogin = !this.showLogin
   }
 
   public getShowRegister(): boolean {
-    console.log("GetRegister " + this.showRegister)
+    console.log("home.GetRegister " + this.showRegister)
     return this.showRegister
   }
 
   public setShowRegister(): void {
-    console.log("SetRegister " + this.showRegister)
+    console.log("home.SetRegister " + this.showRegister)
     this.showLogin = false
     this.showRegister = !this.showRegister
   }

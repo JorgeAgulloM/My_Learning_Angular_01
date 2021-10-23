@@ -6,11 +6,11 @@ import { LoginForm } from '../models/loginForm';
 })
 export class UsersService {
 
-  constructor() { }
 
+  constructor() { }
+  
   sendMessage(login: LoginForm):void {
     console.log(`Los datos han sido enviados para el usuario:
-    ${login.getEmail}`)
+    ${login.getEmail()}`)
   }
-
 }

@@ -5,49 +5,77 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="bootstrap.min.css" href="../../../../node_modules/bootstrap/dist/css/">
-
+  <link rel="stylesheets" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  
   <title>Login Form</title>
 </head>
 <body>
-  <form class="row g-2 needs-validation shadow-lg p-3 mt-lg-4 bg-body rounded"
-     name="loginForm"
-     [formGroup]="valideLogin"
-     (ngSubmit)="sendLogin()"
-     needs-validation novalidate>
-  <div class="col-md-10">
-    <label for="email"
-           class="form-label">Dirección de correo</label>
-    <div class="input-group">
-      <span class="input-group-text"
-            id="email">@</span>
-      <input name="email"
-             id="email"
-             type="text"
-             class="form-control col-md-4"
-             formControlName="email"
-             placeholder="micorreo@dominio.com"
-             required>
+  <div class="d-flex row g-2 p-3 mt-lg-12 shadow-lg bg-body rounded">
+    <form class="row"
+      name="loginForm"
+      [formGroup]="valideLogin"
+      (ngSubmit)="this.sendLogin()">
+      <div class="col-md-12">
+        <label for="email"
+          class="form-label">Dirección de correo</label>
+        <div class="input-group needs-validation">
+          <span class="input-group-text"id="email">@</span>
+          <input name="email"
+            id="email"
+            type="text"
+            class="form-control col-md-4"
+            formControlName="email"
+            placeholder="micorreo@dominio.com"
+            required>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="password"
+          class="form-label">Contraseña</label>
+        <input id="password"
+          name="password"
+          type="password"
+          class="form-control"
+          formControlName="password"
+          placeholder="Contraseña. Recuerde, mínimo 8 caracteres"
+          required>
+          
+      </div>
+      <div class="col-md-12 mt-4">
+        <label *ngIf="!this.valideLogin.valid" 
+               for="error" 
+               class="form-label alert alert-warning col-md-12" 
+               role="alert">
+               Por favor, cumplimente correctamente todos los campos para proceder al login.
+               Si no es usuario registrado, pulse Registrar.
+              </label>
+        <label *ngIf="this.valideLogin.valid" 
+               for="ok" 
+               class="fomr-label alert alert-success col-md-12" 
+               rol="alert">
+               Pulsa en el botón Login para acceder a tu usuario. Gracias.
+              </label>
+                
+        <button *ngIf="this.valideLogin.valid" 
+                type="submit" 
+                class="btn btn-primary m-2 col-md-2" >
+                Login
+              </button>
+      </div>
+    </form>
+    <div class="row position-relative">
+      <div class="col-md-12 mt-2">
+        <button *ngIf="!this.valideLogin.valid" 
+                class="btn btn-primary m-2 col-md-2" 
+                (click)="goToRegister()">
+                Registrar
+              </button>
+      </div>
     </div>
   </div>
-  <div class="col-md-10">
-    <label for="password"
-           class="form-label">Contraseña</label>
-    <input id="password"
-           name="password"
-           type="text"
-           class="form-control"
-           formControlName="password"
-           placeholder="Introduce tu contraseña"
-           required>
-  </div>
-  <div class="col-4" >
-    <div><button type="submit" class="btn btn-primary mx-2" >Login</button></div>
-    <button class="btn btn-primary mx-2">Registrar</button>
-  </div>
-</form>
+
 </body>
 </html>
 
-
+<!--  -->
 <!--https://es.calcuworld.com/deporte-y-ejercicio/calculadora-de-tiempos-carreras/-->
