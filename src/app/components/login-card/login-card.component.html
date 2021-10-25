@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheets" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  
+
   <title>Login Form</title>
 </head>
 <body>
@@ -39,25 +39,25 @@
           formControlName="password"
           placeholder="Contraseña. Recuerde, mínimo 8 caracteres"
           required>
-          
+
       </div>
       <div class="col-md-12 mt-4">
-        <label *ngIf="!this.valideLogin.valid" 
-               for="error" 
-               class="form-label alert alert-warning col-md-12" 
+        <label *ngIf="!this.valideLogin.valid"
+               for="error"
+               class="form-label alert alert-warning col-md-12"
                role="alert">
                Por favor, cumplimente correctamente todos los campos para proceder al login.
                Si no es usuario registrado, pulse Registrar.
               </label>
-        <label *ngIf="this.valideLogin.valid" 
-               for="ok" 
-               class="fomr-label alert alert-success col-md-12" 
+        <label *ngIf="this.valideLogin.valid"
+               for="ok"
+               class="fomr-label alert alert-success col-md-12"
                rol="alert">
                Pulsa en el botón Login para acceder a tu usuario. Gracias.
               </label>
-                
-        <button *ngIf="this.valideLogin.valid" 
-                type="submit" 
+
+        <button *ngIf="this.valideLogin.valid"
+                type="submit"
                 class="btn btn-primary m-2 col-md-2" >
                 Login
               </button>
@@ -65,10 +65,10 @@
     </form>
     <div class="row position-relative">
       <div class="col-md-12 mt-2">
-        <button *ngIf="!this.valideLogin.valid" 
-                class="btn btn-primary m-2 col-md-5" 
+        <button *ngIf="!this.valideLogin.valid"
+                class="btn btn-primary m-2 col-md-4"
                 (click)="goToRegister()">
-                Nuevo usuario
+                Registrar nuevo usuario
               </button>
       </div>
     </div>

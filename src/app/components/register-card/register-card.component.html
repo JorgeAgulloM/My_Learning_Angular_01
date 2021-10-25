@@ -4,16 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="stylesheets" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  
+
   <title>Register Form</title>
 </head>
 <body>
   <div class="d-flex row g-2 needs-validation shadow-lg p-3 mt-lg-3 bg-body rounded">
-    <form class="row" 
+    <form class="row"
           [formGroup]="valideRegister"
-          (ngSubmit)="this.sendRegister()" 
+          (ngSubmit)="this.sendRegister()"
           name="formRegister">
       <div class="col-md-6">
         <label for="name" class="form-label">Nombre</label>
@@ -30,11 +30,11 @@
       </div>
       <div class="col-md-6">
         <label for="lastName" class="form-label">Apellidos</label>
-        <input type="text" 
-              class="form-control" 
+        <input type="text"
+              class="form-control"
               name="lastName"
-              formControlName="lastName" 
-              placeholder="Apellidos" 
+              formControlName="lastName"
+              placeholder="Apellidos"
               required>
         <div class="valid-feedback">
           Looks good!
@@ -42,11 +42,11 @@
       </div>
       <div class="col-md-6">
         <label for="phone" class="form-label">Teléfono</label>
-        <input type="number" 
-              class="form-control" 
-              name="phone" 
-              formControlName="phone" 
-              placeholder="Télefono" 
+        <input type="number"
+              class="form-control"
+              name="phone"
+              formControlName="phone"
+              placeholder="Télefono"
               required>
         <div class="valid-feedback">
           Looks good!
@@ -56,11 +56,11 @@
         <label for="email" class="form-label">Dirección de correo</label>
         <div class="input-group has-validation">
           <span class="input-group-text" id="email">@</span>
-          <input type="text" 
-                class="form-control" 
-                name="email" 
-                formControlName="email" 
-                placeholder="micorreo@dominio.com" 
+          <input type="text"
+                class="form-control"
+                name="email"
+                formControlName="email"
+                placeholder="micorreo@dominio.com"
                 required value="Jorge@j">
           <div class="invalid-feedback">
             Please choose a username.
@@ -69,9 +69,9 @@
       </div>
       <div class="col-md-12">
         <label for="address" class="form-label">Dirección</label>
-        <input type="text" 
-              class="form-control" 
-              name="address" 
+        <input type="text"
+              class="form-control"
+              name="address"
               placeholder="C/ de la Providencia, n 7 3º">
         <div class="invalid-feedback">
           Please provide a valid city.
@@ -79,9 +79,9 @@
       </div>
       <div class="col-md-4">
         <label for="city" class="form-label">Ciudad</label>
-        <input type="text" 
-              class="form-control" 
-              name="city" 
+        <input type="text"
+              class="form-control"
+              name="city"
               placeholder="Madrid">
         <div class="invalid-feedback">
           Please provide a valid city.
@@ -152,24 +152,26 @@
       </div>
       <div class="col-md-7">
         <label for="password" class="form-label">Contraseña</label>
-        <input type="text" 
-        class="form-control" 
-        name="password" 
-        formControlName="password" 
-        placeholder="Debes usar mínimo 8 caracteres" 
-        required>
+        <input type="text"
+              class="form-control"
+              (keyup) = "setPass($event)"
+              name="password"
+              formControlName="password"
+              placeholder="Debes usar mínimo 8 caracteres"
+              required>
         <div class="invalid-feedback">
           Please provide a valid zip.
         </div>
       </div>
       <div class="col-md-7">
         <label for="rePassword" class="form-label">Repite la contraseña</label>
-        <input type="text" 
-        class="form-control" 
-        name="rePassword" 
-        formControlName="rePassword" 
-        placeholder="Por favor, repite la contraseña" 
-        required>
+        <input type="text"
+              class="form-control"
+              (keyup) = "setRePass($event)"
+              name="rePassword"
+              formControlName="rePassword"
+              placeholder="Por favor, repite la contraseña"
+              required>
         <div class="invalid-feedback">
           Please provide a valid zip.
         </div>
@@ -185,23 +187,38 @@
           </div>
         </div>
       </div>
-      <div class="col-12"> 
-        <label *ngIf="!this.valideRegister.valid" 
-              for="error" 
-              class="form-label alert alert-warning col-md-12" 
+      <div class="col-12">
+        <label *ngIf="!this.valideRegister.valid"
+              for="error"
+              class="form-label alert alert-warning col-md-12"
               role="alert">
               Por favor, cumplimente correctamente todos los campos para proceder al login.
               Si no es usuario registrado, pulse Registrar.
        </label>
-        <label *ngIf="this.valideRegister.valid" 
-              for="ok" 
-              class="fomr-label alert alert-success col-md-12" 
+       <label *ngIf="this.valideRegister.valid && !this.getPassOk()"
+              for="ok"
+              class="fomr-label alert alert-danger col-md-12"
+              rol="alert">
+              Los campos de constraseña no coinciden.
+        </label>
+        <label *ngIf="this.valideRegister.valid && this.getPassOk()"
+              for="ok"
+              class="fomr-label alert alert-success col-md-12"
               rol="alert">
               Pulsa en el botón Login para acceder a tu usuario. Gracias.
        </label>
-        <button [disabled]="!this.valideRegister.valid" class="btn btn-primary" type="submit">Registrar</button>
+       <button [disabled]="!this.valideRegister.valid || !this.getPassOk()" class="btn btn-primary" type="submit">Registrar</button>
       </div>
     </form>
+
+    <div class="row position-relative">
+      <div class="col-md-12 mt-2">
+        <button class="btn btn-primary col-md-2"
+                (click)="gotToLogin()">
+                Volver a Login
+        </button>
+      </div>
+    </div>
   </div>
 </body>
 </html>
