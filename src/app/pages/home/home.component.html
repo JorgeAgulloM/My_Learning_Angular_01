@@ -11,39 +11,34 @@
 
     <!--Encabezado-->
     <header class="p-4 bg-white text-black shadow-lg rounded ">
-      <div class="container">
+      <div class="container col-md-12">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
           </a>
+            <ul class="nav  me-lg-auto my-2 justify-content-center ">
+              <li><a href="./home" class="nav-link px-2 text-info">Inicio</a></li>
+              <li><a href="./home" class="nav-link px-2 text-black">Caracteristicas</a></li>
+              <li><a href="./home" class="nav-link px-2 text-black">FAQs</a></li>
+              <li><a href="./home" class="nav-link px-2 text-black">Sobre mi</a></li>
+            </ul>
 
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 text-info">Inicio</a></li>
-            <li><a href="#" class="nav-link px-2 text-black">Caracteristicas</a></li>
-            <li><a href="#" class="nav-link px-2 text-black">FAQs</a></li>
-            <li><a href="#" class="nav-link px-2 text-black">Sobre nosotros</a></li>
-          </ul>
+            <div class="col-lg-auto me-lg-auto text-primary">
+              <h1><em><strong>RUNNERS</strong></em></h1>
+            </div>
 
-          <div class="col-lg-auto me-lg-auto text-primary">
-            <h1><em><strong>RUNNERS</strong></em></h1>
-          </div>
-
-          <div class="text-end">
-            <button type="button" class="btn btn-primary me-2" (click)="this.setShowLogin()">Login</button>
-            <button type="button" class="btn btn-warning" (click)="this.setShowRegister()">Registrar</button>
+            <div class="text-end row col-md-4">
+              <div *ngIf="!this.getIsUserLogIn()"><button type="button" class="btn btn-warning me-2" (click)="this.setUserLogIn()">Cerrar sesión</button>
+            </div>
+            </div>
           </div>
         </div>
-      </div>
     </header>
 
     <!--Formulario de registro-->
     <main class="mt-5 mb-5 ">
       <div class="row d-flex justify-content-center">
           <div class="col-8 col-sm-4 d-flex justify-content-center align-items-center">
-
-            <app-login-card *ngIf="getShowLogin()"></app-login-card>
-
-            <app-register-card *ngIf="getShowRegister()"></app-register-card>
 
           </div>
       </div>

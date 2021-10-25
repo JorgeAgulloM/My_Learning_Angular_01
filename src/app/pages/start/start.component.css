@@ -1,0 +1,16 @@
+html,body{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+  }
+  body{
+    background-image: url(../../../assets/images/imgHome.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  h1 {
+    text-shadow: 1px 2px 4px black
+  }

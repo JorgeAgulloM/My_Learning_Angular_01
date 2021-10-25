@@ -1,40 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent   {
+export class HomeComponent implements OnInit {
 
-  private showLogin: boolean
-  private showRegister: boolean
+
+  private userLogIn: boolean
+  public infoUser: Array<string>
 
   constructor() {
-    this.showLogin = false
-    this.showRegister = false
-   }
 
-  public getShowLogin(): boolean {
-    console.log("home.GetLogin " + this.showLogin)
-    return this.showLogin
+    this.userLogIn = false
+    this.infoUser = Array<string>() 
   }
 
-  public setShowLogin(): void {
-    console.log("home.SetLogin " + this.showLogin)
-    this.showRegister = false
-    this.showLogin = !this.showLogin
+  ngOnInit(): void {
+    console.log("Inicio")
+
   }
 
-  public getShowRegister(): boolean {
-    console.log("home.GetRegister " + this.showRegister)
-    return this.showRegister
+
+
+  public getIsUserLogIn(): boolean {
+    return this.userLogIn
   }
 
-  public setShowRegister(): void {
-    console.log("home.SetRegister " + this.showRegister)
-    this.showLogin = false
-    this.showRegister = !this.showRegister
+  public setUserLogIn(): void {
+    this.userLogIn = !this.userLogIn
   }
 
+  public getInfoUser(): Array<string> {
+      return this.infoUser
+  }
+
+  public setInfoUser(value: Array<string>): void {
+      this.infoUser = value
+      this.setUserLogIn()
+
+      
+
+      console.log(this.infoUser)     
+  }
 }
