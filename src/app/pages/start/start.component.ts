@@ -1,4 +1,3 @@
-import { HomeComponent } from './../home/home.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,12 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
-  private home: HomeComponent
   private showLogin: boolean
   private showRegister: boolean
 
-  constructor() { 
-    this.home = new HomeComponent
+  constructor() {
     this.showLogin = true
     this.showRegister = false
   }
@@ -39,6 +36,6 @@ export class StartComponent implements OnInit {
     this.showRegister = !this.showRegister
   }
 
-  
+
 
 }

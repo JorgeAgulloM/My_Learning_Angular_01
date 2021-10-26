@@ -1,6 +1,6 @@
 import { StartComponent } from './../../pages/start/start.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterForm } from 'src/app/models/registerForm';
 
@@ -37,7 +37,7 @@ export class RegisterCardComponent implements OnInit {
     password: ['',  Validators.minLength(8)],
     rePassword: ['',  Validators.required],
     conditions: ['',  Validators.required]
-    //validator: this.checkPass
+
   })
 
   ngOnInit(): void {
@@ -93,24 +93,32 @@ export class RegisterCardComponent implements OnInit {
     this.setPassOk()
   }
 
-
-
-/*   checkPass(group: FormGroup) {
-    let pass = group.controls.password.value
-    let rePass = group.controls.rePassword.value
-    let value: any = pass === rePass ? null : { notSame: true }
-
-    if (value != null) {
-      this.passOk = true
-    } else {
-      this.passOk = false
-    }
-
-    return value
-  } */
-
   gotToLogin(): void {
     this.Start.setShowLogin()
   }
 
+
+
+
+  //value: any = pass === rePass ? null : { notSame: true }
+}
+
+// custom validator to check that two fields match
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
+  }
 }

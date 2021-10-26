@@ -1,3 +1,4 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,41 +8,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-
   private userLogIn: boolean
-  public infoUser: Array<string>
+  private infoUser: Array<string>
+  private userDicc = {}
 
-  constructor() {
+  constructor(
+    private activeRouting: ActivatedRoute,
+    private routing: Router
+    ) {
 
     this.userLogIn = false
-    this.infoUser = Array<string>() 
+    this.infoUser = Array<string>()
   }
 
   ngOnInit(): void {
-    console.log("Inicio")
+    console.log("Inicio de Home")
+    this.userDicc = this.activeRouting.snapshot.params
+
+    this.setInfoUser(this.activeRouting.snapshot.params)
+
 
   }
-
-
 
   public getIsUserLogIn(): boolean {
     return this.userLogIn
   }
 
-  public setUserLogIn(): void {
-    this.userLogIn = !this.userLogIn
+  public setUserLogIn(value: boolean): void {
+    this.userLogIn = value
   }
 
   public getInfoUser(): Array<string> {
       return this.infoUser
   }
 
-  public setInfoUser(value: Array<string>): void {
-      this.infoUser = value
-      this.setUserLogIn()
+  public getInfoUserValue(value: number): string {
+    return this.infoUser[value]
+}
 
-      
+  public setInfoUser(valueDicc = this.activeRouting.snapshot.params): void {
+    this.setUserLogIn(true)
 
-      console.log(this.infoUser)     
+    Object.entries(valueDicc).forEach(
+      ([key, value]) => this.infoUser.push(value)
+    )
+      console.log(this.getIsUserLogIn())
+      console.log(this.infoUser)
+  }
+
+  public closeSession(): void {
+    this.setUserLogIn(false)
+    this.infoUser = []
+    this.routing.navigate(['./start'])
   }
 }

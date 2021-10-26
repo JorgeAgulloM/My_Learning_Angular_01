@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginCardComponent } from './login-card/login-card.component';
 import { RegisterCardComponent } from './register-card/register-card.component';
-import { ReactiveFormsModule, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -15,7 +15,6 @@ import { ReactiveFormsModule, FormGroup } from '@angular/forms';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-
     PipesModule
   ],
   exports: [

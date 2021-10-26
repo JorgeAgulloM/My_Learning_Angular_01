@@ -28,7 +28,12 @@
             </div>
 
             <div class="text-end row col-md-4">
-              <div *ngIf="!this.getIsUserLogIn()"><button type="button" class="btn btn-warning me-2" (click)="this.setUserLogIn()">Cerrar sesión</button>
+              <div *ngIf="this.getIsUserLogIn()">
+                <button type="button"
+                        class="btn btn-warning me-2"
+                        (click)="this.closeSession()">
+                        Cerrar sesión
+                </button>
             </div>
             </div>
           </div>
