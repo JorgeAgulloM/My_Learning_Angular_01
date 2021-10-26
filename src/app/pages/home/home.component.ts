@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +10,6 @@ export class HomeComponent implements OnInit {
 
   private userLogIn: boolean
   private infoUser: Array<string>
-  private userDicc = {}
 
   constructor(
     private activeRouting: ActivatedRoute,
@@ -23,10 +22,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Inicio de Home")
-    this.userDicc = this.activeRouting.snapshot.params
-
     this.setInfoUser(this.activeRouting.snapshot.params)
-
 
   }
 
@@ -52,7 +48,6 @@ export class HomeComponent implements OnInit {
     Object.entries(valueDicc).forEach(
       ([key, value]) => this.infoUser.push(value)
     )
-      console.log(this.getIsUserLogIn())
       console.log(this.infoUser)
   }
 

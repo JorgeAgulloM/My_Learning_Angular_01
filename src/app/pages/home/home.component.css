@@ -14,3 +14,11 @@ body{
 h1 {
   text-shadow: 1px 2px 4px black
 }
+
+img{
+  object-fit: cover;
+  width: 40%;
+  margin-top: 20px;
+  margin-left: 20px;
+  position: relative;
+}
