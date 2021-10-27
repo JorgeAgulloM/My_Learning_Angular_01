@@ -17,7 +17,7 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path: 'home',
+    path: 'home/:email',
     component: HomeComponent,
     pathMatch:'full'
   },

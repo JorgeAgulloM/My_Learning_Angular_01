@@ -1,6 +1,6 @@
 import { StartComponent } from './../../pages/start/start.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterForm } from 'src/app/models/registerForm';
 
@@ -19,7 +19,8 @@ export class RegisterCardComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
-    private Start: StartComponent) {
+    private Start: StartComponent
+    ) {
       this.passOk = false
       this.pass = ""
       this.rePass = ""
@@ -37,13 +38,10 @@ export class RegisterCardComponent implements OnInit {
     password: ['',  Validators.minLength(8)],
     rePassword: ['',  Validators.required],
     conditions: ['',  Validators.required]
-
   })
 
   ngOnInit(): void {
   }
-
-
 
   sendRegister(): void{
     console.log("Enviado datos del nuevo usuario...")
@@ -76,7 +74,7 @@ export class RegisterCardComponent implements OnInit {
   setPassOk(): void {
     this.passOk = (
       this.pass == this.rePass
-      )
+    )
   }
 
   setPass(event: any): void {
@@ -97,28 +95,28 @@ export class RegisterCardComponent implements OnInit {
     this.Start.setShowLogin()
   }
 
-
-
-
   //value: any = pass === rePass ? null : { notSame: true }
 }
 
 // custom validator to check that two fields match
-export function MustMatch(controlName: string, matchingControlName: string) {
+/* export function MustMatch() {
   return (formGroup: FormGroup) => {
-      const control = formGroup.controls[controlName];
-      const matchingControl = formGroup.controls[matchingControlName];
+      const control = formGroup.controls['password'];
+      const matchingControl = formGroup.controls['rePassword'];
 
       if (matchingControl.errors && !matchingControl.errors.mustMatch) {
           // return if another validator has already found an error on the matchingControl
+          console.log("Error con el pass")
           return;
       }
 
       // set error on matchingControl if validation fails
       if (control.value !== matchingControl.value) {
           matchingControl.setErrors({ mustMatch: true });
+          console.log(" pass ok")
       } else {
           matchingControl.setErrors(null);
+          console.log("Error con el pass")
       }
   }
-}
+} */

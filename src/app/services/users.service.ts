@@ -1,7 +1,5 @@
 import { Router } from '@angular/router';
-//import { HomeComponent } from './../pages/home/home.component';
 import { Injectable } from '@angular/core';
-//import { LoginForm } from '../models/loginForm';
 import { RegisterForm } from '../models/registerForm';
 
 @Injectable({
@@ -28,18 +26,6 @@ export class UsersService {
 
       )
     }
-
-  /* sendMessage(login: LoginForm): void {
-    console.log(`Los datos han sido enviados para el usuario:
-    ${login.getEmail()}`)
-  } */
-
-  /* sendMessageReg(register: RegisterForm, home: HomeComponent): void {
-    console.log(`Los datos han sido registrados para el nuevo usuario:
-    ${register.get_email()}`)
-    home.setInfoUser([register.get_name(), register.get_email()])
-    console.log("Usuario logeado")
-  } */
 
   queryUserRegitered(email: string, pass: string): number {
     let result: number = -3 //Error en la lectura del Array, en caso de que no
@@ -76,16 +62,17 @@ export class UsersService {
         alert("Error en la consulta.")
         break
       default:{
-        this.routing.navigate(['./home', this.getRegisterUser(this.registerUser[result].get_email())])//this.registerUser[result]])
+        //this.routing.navigate(['./home', this.getRegisterUser(this.registerUser[result].get_email())])
+        this.routing.navigate(['./home', this.registerUser[result].get_email()])
         break
       }
     }
   }
 
-  newUserRegistered(registerUser = new RegisterForm): number{
+  newUserRegistered(registerUser = new RegisterForm): void{
     let result: number = this.queryUserRegitered(registerUser.get_email(), "00000000")
-
-    if (result < 2) {
+    console.log('newUserRegistered' + result)
+    if (result == -1) {
       this.registerUser.push(new RegisterForm(
         registerUser.get_name(),
         registerUser.get_lastName(),
@@ -99,21 +86,18 @@ export class UsersService {
         registerUser.get_conditions())
         )
 
-        console.log(this.registerUser.length)
-        this.routing.navigate(['./home', this.getRegisterUser(registerUser.get_email())])
-        result = 3
+        this.routing.navigate(['./home', this.registerUser[this.registerUser.length -1].get_email()])
 
     } else {
       alert("El usuario ya está registrado, por favor, introduce otro email.")
-      result = 2
-
     }
-
-    return result
   }
 
   getRegisterUser(email: string): RegisterForm {
+    console.log(email)
+    console.log('Valor de getRegisterUser' + this.registerUser.filter(x => x.get_email() == email)[0])
     return this.registerUser.filter(x => x.get_email() == email)[0]
+
   }
 
 }

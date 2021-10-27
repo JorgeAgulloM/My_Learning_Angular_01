@@ -6,15 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Start</title>
 </head>
-    <body>
+    <body class="bg-success p-2 text-dark bg-opacity-10">
+      <header class="p-2 bg-white text-black shadow-lg rounded ">
+        <div class="row container">
+          <div class="d-flex">
+            <div>
+              <div class="text-black-50">
+                <h1>
+                  <em>
+                    <strong>Bienvenido a </strong>
+                  </em>
+                  <em class="text-primary">
+                    <strong>RUNNERS</strong>
+                  </em>
+                </h1>
+              </div>
+              <div class="text-primary">
+              </div>
+            </div>
+            </div>
+          </div>
+      </header>
         <main class="mt-5 mb-5 ">
             <div class="row d-flex justify-content-center">
                 <div class="col-8 col-sm-4 d-flex justify-content-center align-items-center">
-      
+
                     <app-login-card *ngIf="getShowLogin()"></app-login-card>
 
                     <app-register-card *ngIf="getShowRegister()"></app-register-card>
-        
+
                 </div>
             </div>
         </main>

@@ -1,5 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private activeRouting: ActivatedRoute,
-    private routing: Router
+    private routing: Router,
+    private usersSrv: UsersService
     ) {
 
     this.userLogIn = false
@@ -22,7 +24,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Inicio de Home")
-    this.setInfoUser(this.activeRouting.snapshot.params)
+
+    this.activeRouting.snapshot.paramMap.get('email') != null ?
+      this.setInfoUser(this.usersSrv.getRegisterUser(this.activeRouting.snapshot.paramMap.get('email')!))
+      :
+      this.setInfoUser(this.usersSrv.getRegisterUser('default'))
+
+    if (this.infoUser == null || this.infoUser.length == 0) {
+      this.routing.navigate(['./start'])
+    }
 
   }
 

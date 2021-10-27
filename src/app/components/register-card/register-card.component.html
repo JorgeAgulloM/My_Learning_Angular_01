@@ -72,6 +72,7 @@
         <input type="text"
               class="form-control"
               name="address"
+              formControlName="address"
               placeholder="C/ de la Providencia, n 7 3º">
         <div class="invalid-feedback">
           Please provide a valid city.
@@ -82,6 +83,7 @@
         <input type="text"
               class="form-control"
               name="city"
+              formControlName="city"
               placeholder="Madrid">
         <div class="invalid-feedback">
           Please provide a valid city.
@@ -89,7 +91,7 @@
       </div>
       <div class="col-md-4">
         <label for="state" class="form-label">Provincia</label>
-        <select class="form-select" name="state">
+        <select class="form-select" name="state" formControlName="state">
           <option selected disabled value="">Selecciona...</option>
           <option value="">- selecciona -</option>
                         <option value="15">A coru&#241;a</option>
