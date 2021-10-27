@@ -15,7 +15,7 @@ export class LoginCardComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
-    private start: IndexComponent) {
+    private index: IndexComponent) {
     }
 
   valideLogin = this.fb.group({
@@ -42,7 +42,7 @@ export class LoginCardComponent implements OnInit {
   }
 
   goToRegister(): void {
-    this.start.setShowRegister()
+    this.index.setShowRegister()
   }
 
 }

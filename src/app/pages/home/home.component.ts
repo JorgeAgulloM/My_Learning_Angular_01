@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
       this.setInfoUser(this.usersSrv.getRegisterUser('default'))
 
     if (this.infoUser == null || this.infoUser.length == 0) {
-      this.routing.navigate(['./start'])
+      this.routing.navigate(['./index'])
     }
 
   }
