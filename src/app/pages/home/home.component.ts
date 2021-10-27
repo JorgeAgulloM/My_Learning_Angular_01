@@ -64,6 +64,6 @@ export class HomeComponent implements OnInit {
   public closeSession(): void {
     this.setUserLogIn(false)
     this.infoUser = []
-    this.routing.navigate(['./start'])
+    this.routing.navigate(['./index'])
   }
 }

@@ -1,4 +1,4 @@
-import { StartComponent } from './pages/start/start.component';
+import { IndexComponent } from './pages/index/index.component';
 import { LoginForm } from './models/loginForm';
 import { HomeComponent } from './pages/home/home.component';
 import { NgModule } from '@angular/core';
@@ -8,12 +8,12 @@ import { RegisterCardComponent } from './components/register-card/register-card.
 const routes: Routes = [
   {
     path:'',
-    redirectTo:'start',
+    redirectTo:'index',
     pathMatch:'full'
   },
   {
-    path: 'start',
-    component: StartComponent,
+    path: 'index',
+    component: IndexComponent,
     pathMatch:'full'
   },
   {

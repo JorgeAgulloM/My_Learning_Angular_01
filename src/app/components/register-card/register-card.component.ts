@@ -1,4 +1,4 @@
-import { StartComponent } from './../../pages/start/start.component';
+import { IndexComponent } from '../../pages/index/index.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
@@ -19,7 +19,7 @@ export class RegisterCardComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
-    private Start: StartComponent
+    private index: IndexComponent
     ) {
       this.passOk = false
       this.pass = ""
@@ -92,31 +92,8 @@ export class RegisterCardComponent implements OnInit {
   }
 
   gotToLogin(): void {
-    this.Start.setShowLogin()
+    this.index.setShowLogin()
   }
 
-  //value: any = pass === rePass ? null : { notSame: true }
 }
 
-// custom validator to check that two fields match
-/* export function MustMatch() {
-  return (formGroup: FormGroup) => {
-      const control = formGroup.controls['password'];
-      const matchingControl = formGroup.controls['rePassword'];
-
-      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-          // return if another validator has already found an error on the matchingControl
-          console.log("Error con el pass")
-          return;
-      }
-
-      // set error on matchingControl if validation fails
-      if (control.value !== matchingControl.value) {
-          matchingControl.setErrors({ mustMatch: true });
-          console.log(" pass ok")
-      } else {
-          matchingControl.setErrors(null);
-          console.log("Error con el pass")
-      }
-  }
-} */

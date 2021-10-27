@@ -1,4 +1,4 @@
-import { StartComponent } from './../../pages/start/start.component';
+import { IndexComponent } from '../../pages/index/index.component';
 import { LoginForm } from 'src/app/models/loginForm';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -15,7 +15,7 @@ export class LoginCardComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
-    private start: StartComponent) { 
+    private start: IndexComponent) {
     }
 
   valideLogin = this.fb.group({
@@ -34,7 +34,7 @@ export class LoginCardComponent implements OnInit {
 
       console.log(`Enviado el formulario con los valores ${value.getEmail()} y ${value.getPassword()}`)
       this.userSrv.userLogin(value.getEmail(), value.getPassword())
-            
+
   }
 
   getValidEmail(): boolean{
