@@ -1,6 +1,6 @@
 import { IndexComponent } from '../../pages/index/index.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterForm } from 'src/app/models/registerForm';
 
@@ -8,7 +8,8 @@ import { RegisterForm } from 'src/app/models/registerForm';
 @Component({
   selector: 'app-register-card',
   templateUrl: './register-card.component.html',
-  styleUrls: ['./register-card.component.css']
+  styleUrls: ['./register-card.component.css'],
+  
 })
 export class RegisterCardComponent implements OnInit {
 
@@ -19,7 +20,8 @@ export class RegisterCardComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
-    private index: IndexComponent
+    private index: IndexComponent,
+    private lifeValidator: LifeValidator
     ) {
       this.passOk = false
       this.pass = ""
@@ -38,6 +40,8 @@ export class RegisterCardComponent implements OnInit {
     password: ['',  Validators.minLength(8)],
     rePassword: ['',  Validators.required],
     conditions: ['',  Validators.required]
+  },{
+
   })
 
   ngOnInit(): void {
@@ -95,5 +99,30 @@ export class RegisterCardComponent implements OnInit {
     this.index.setShowLogin()
   }
 
+  probando(): void {
+    console.log(this.lifeValidator.reviewData())
+    
+  }
+
 }
 
+export class LifeValidator {
+
+  constructor(private fg: FormGroup,
+    private fc: FormControl){}
+
+  reviewData(): Array<number> {
+    let values = Array<number>(9)
+    let inputs = Array<string>('name', 'lastName', 'phone', 'email', 'address', 'city', 'state', 'password', 'rePasword', 'conditions')
+    
+      values.forEach(element => { 
+      const CONDITION_ONE: boolean = (this.fg.controls[inputs[element]].touched && this.fg.controls[inputs[element]].status != 'VALID')
+      const CONDITION_TWO: boolean = (this.fg.controls[inputs[element]].touched && this.fg.controls[inputs[element]].status == 'VALID')
+      values[element] = CONDITION_ONE ? 1 : 
+                        CONDITION_TWO ? 2 :
+                                        0 ;                 
+    });
+
+    return values
+  }
+}

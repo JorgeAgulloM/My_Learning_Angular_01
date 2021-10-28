@@ -5,93 +5,78 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheets" href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-
-  <title>Register Form</title>
+  <title>Register</title>
 </head>
 <body>
-  <div class="d-flex row g-2 needs-validation shadow-lg p-3 mt-lg-3 bg-body rounded">
+  <div class="d-flex row g-2 shadow-lg p-3 mt-lg-3 bg-body rounded">
+    
+    <div class="col-md-12 p-2">
+      <label class="form-control bg-primary text-white">Registro para el nuevo usuario</label>
+    </div>
+    
     <form class="row"
           [formGroup]="valideRegister"
           (ngSubmit)="this.sendRegister()"
+          (keyup)="this.probando()"
           name="formRegister">
-      <div class="col-md-6">
-        <label for="name" class="form-label">Nombre</label>
+      <div class="col-md-6 form-floating">
         <input
               type="text"
               class="form-control"
-              name="name"
+              id="name"
               formControlName="name"
               placeholder="Nombre"
               required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
+        <label for="name" class="form-label ms-2">Nombre</label>
       </div>
-      <div class="col-md-6">
-        <label for="lastName" class="form-label">Apellidos</label>
+      <div class="col-md-6 form-floating">
         <input type="text"
               class="form-control"
-              name="lastName"
+              id="lastName"
               formControlName="lastName"
               placeholder="Apellidos"
               required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
+        <label for="lastName" class="form-label ms-2">Apellidos</label>
       </div>
-      <div class="col-md-6">
-        <label for="phone" class="form-label">Teléfono</label>
+      <div class="col-md-6 mt-3 form-floating">
         <input type="number"
               class="form-control"
-              name="phone"
+              id="phone"
               formControlName="phone"
               placeholder="Télefono"
               required>
-        <div class="valid-feedback">
-          Looks good!
-        </div>
+        <label for="phone" class="form-label ms-2">Teléfono</label>
       </div>
-      <div class="col-md-6">
-        <label for="email" class="form-label">Dirección de correo</label>
-        <div class="input-group has-validation">
-          <span class="input-group-text" id="email">@</span>
+      <div class="col-md-6 mt-3">
+        <div class="input-group form-floating">
           <input type="text"
                 class="form-control"
-                name="email"
+                id="email"
                 formControlName="email"
                 placeholder="micorreo@dominio.com"
                 required value="Jorge@j">
-          <div class="invalid-feedback">
-            Please choose a username.
-          </div>
+          <label for="email" class="form-label">Dirección de correo</label>
+          <span class="input-group-text" id="email">@</span>
         </div>
       </div>
-      <div class="col-md-12">
-        <label for="address" class="form-label">Dirección</label>
+      <div class="col-md-12 mt-3 form-floating">
         <input type="text"
               class="form-control"
-              name="address"
+              id="address"
               formControlName="address"
               placeholder="C/ de la Providencia, n 7 3º">
-        <div class="invalid-feedback">
-          Please provide a valid city.
-        </div>
+        <label for="address" class="form-label ms-2">Dirección</label>
       </div>
-      <div class="col-md-4">
-        <label for="city" class="form-label">Ciudad</label>
+      <div class="col-md-6 mt-3 form-floating">
         <input type="text"
               class="form-control"
-              name="city"
+              id="city"
               formControlName="city"
               placeholder="Madrid">
-        <div class="invalid-feedback">
-          Please provide a valid city.
-        </div>
+        <label for="city" class="form-label ms-2">Ciudad</label>
       </div>
-      <div class="col-md-4">
-        <label for="state" class="form-label">Provincia</label>
-        <select class="form-select" name="state" formControlName="state">
+      <div class="col-md-6 mt-3 form-floating">
+        <select class="form-select" id="state" formControlName="state">
           <option selected disabled value="">Selecciona...</option>
           <option value="">- selecciona -</option>
                         <option value="15">A coru&#241;a</option>
@@ -148,45 +133,34 @@
                         <option value="49">Zamora</option>
                         <option value="50">Zaragoza</option>
         </select>
-        <div class="invalid-feedback">
-          Please select a valid state.
-        </div>
+        <label for="state" class="form-label">Provincia</label>
       </div>
-      <div class="col-md-7">
-        <label for="password" class="form-label">Contraseña</label>
+      <div class="col-md-7 mt-3 form-floating">
         <input type="text"
               class="form-control"
               (keyup) = "setPass($event)"
-              name="password"
+              id="password"
               formControlName="password"
               placeholder="Debes usar mínimo 8 caracteres"
               required>
-        <div class="invalid-feedback">
-          Please provide a valid zip.
-        </div>
+        <label for="password" class="form-label ms-2">Contraseña</label>
       </div>
-      <div class="col-md-7">
-        <label for="rePassword" class="form-label">Repite la contraseña</label>
+      <div class="col-md-7 mt-3 form-floating">
         <input type="text"
               class="form-control"
               (keyup) = "setRePass($event)"
-              name="rePassword"
+              id="rePassword"
               formControlName="rePassword"
               placeholder="Por favor, repite la contraseña"
               required>
-        <div class="invalid-feedback">
-          Please provide a valid zip.
-        </div>
+        <label for="rePassword" class="form-label ms-2">Repite la contraseña</label>
       </div>
-      <div class="col-12">
+      <div class="col-12 mt-3">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" name="conditions" formControlName="conditions" required>
           <label class="form-check-label" for="invalidCheck">
             Acepto las condiciones de registro.
           </label>
-          <div class="invalid-feedback">
-            You must agree before submitting.
-          </div>
         </div>
       </div>
       <div class="col-12">
@@ -209,13 +183,17 @@
               rol="alert">
               Pulsa en el botón Login para acceder a tu usuario. Gracias.
        </label>
-       <button [disabled]="!this.valideRegister.valid || !this.getPassOk()" class="btn btn-primary" type="submit">Registrar</button>
+       <button [disabled]="!this.valideRegister.valid || !this.getPassOk()" 
+              class="btn btn-outline-success col-md-4" 
+              type="submit">
+              Registrate
+        </button>
       </div>
     </form>
 
     <div class="row position-relative">
       <div class="col-md-12 mt-2">
-        <button class="btn btn-primary col-md-2"
+        <button class="btn btn-outline-primary col-md-4"
                 (click)="gotToLogin()">
                 Volver a Login
         </button>

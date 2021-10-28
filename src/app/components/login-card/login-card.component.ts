@@ -10,37 +10,33 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./login-card.component.css']
 })
 
-export class LoginCardComponent implements OnInit {
+export class LoginCardComponent {
 
+  //  Variables del Form, el servicio y la web index
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
     private index: IndexComponent) {
     }
 
+  //  Validación de los datos de login
   valideLogin = this.fb.group({
     email: ['',  Validators.email],
     password: ['',  Validators.minLength(8)]
   })
 
-  ngOnInit(): void {
-  }
-
+  //  Función para enviar los datos introducidos por el usuario al sevicio.
   sendLogin(): void{
+      //  Se cargan los datos en la variable
       let value: LoginForm = new LoginForm(
         this.valideLogin.value.email,
         this.valideLogin.value.password
       )
-
-      console.log(`Enviado el formulario con los valores ${value.getEmail()} y ${value.getPassword()}`)
+      //  Se envian al servicio.
       this.userSrv.userLogin(value.getEmail(), value.getPassword())
-
   }
 
-  getValidEmail(): boolean{
-    return this.valideLogin.value(this.getValidEmail)
-  }
-
+  //  Función para llamar a la función de index, la cual intercambia el componente Login por Register.
   goToRegister(): void {
     this.index.setShowRegister()
   }
