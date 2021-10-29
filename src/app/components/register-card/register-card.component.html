@@ -9,15 +9,14 @@
 </head>
 <body>
   <div class="d-flex row g-2 shadow-lg p-3 mt-lg-3 bg-body rounded">
-    
+
     <div class="col-md-12 p-2">
       <label class="form-control bg-primary text-white">Registro para el nuevo usuario</label>
     </div>
-    
+
     <form class="row"
           [formGroup]="valideRegister"
-          (ngSubmit)="this.sendRegister()"
-          (keyup)="this.probando()"
+          (ngSubmit)="sendRegister()"
           name="formRegister">
       <div class="col-md-6 form-floating">
         <input
@@ -38,7 +37,7 @@
               required>
         <label for="lastName" class="form-label ms-2">Apellidos</label>
       </div>
-      <div class="col-md-6 mt-3 form-floating">
+      <div class="col-md-7 mt-3 form-floating">
         <input type="number"
               class="form-control"
               id="phone"
@@ -54,9 +53,21 @@
                 id="email"
                 formControlName="email"
                 placeholder="micorreo@dominio.com"
-                required value="Jorge@j">
-          <label for="email" class="form-label">Dirección de correo</label>
+                required>
+          <label for="email" class="form-label">Email</label>
           <span class="input-group-text" id="email">@</span>
+        </div>
+      </div>
+      <div class="col-md-6 mt-3">
+        <div class="input-group form-floating">
+          <input type="text"
+                class="form-control"
+                id="reEmail"
+                formControlName="reEmail"
+                placeholder="micorreo@dominio.com"
+                required>
+          <label for="reEmail" class="form-label">Repita el email</label>
+          <span class="input-group-text" id="reEmail">@</span>
         </div>
       </div>
       <div class="col-md-12 mt-3 form-floating">
@@ -135,26 +146,26 @@
         </select>
         <label for="state" class="form-label">Provincia</label>
       </div>
-      <div class="col-md-7 mt-3 form-floating">
-        <input type="text"
-              class="form-control"
-              (keyup) = "setPass($event)"
-              id="password"
-              formControlName="password"
-              placeholder="Debes usar mínimo 8 caracteres"
-              required>
-        <label for="password" class="form-label ms-2">Contraseña</label>
-      </div>
-      <div class="col-md-7 mt-3 form-floating">
-        <input type="text"
-              class="form-control"
-              (keyup) = "setRePass($event)"
-              id="rePassword"
-              formControlName="rePassword"
-              placeholder="Por favor, repite la contraseña"
-              required>
-        <label for="rePassword" class="form-label ms-2">Repite la contraseña</label>
-      </div>
+      <form class="row" [formGroup]="valideRegisterPass">
+        <div class="col-md-6 mt-3 form-floating">
+          <input type="text"
+                class="form-control"
+                id="password"
+                formControlName="password"
+                placeholder="Debes usar mínimo 8 caracteres"
+                required>
+          <label for="password" class="form-label ms-2">Contraseña</label>
+        </div>
+        <div class="col-md-6 mt-3 form-floating">
+          <input type="text"
+                class="form-control"
+                id="rePassword"
+                formControlName="rePassword"
+                placeholder="Por favor, repite la contraseña"
+                required>
+          <label for="rePassword" class="form-label ms-2">Repite la contraseña</label>
+        </div>
+      </form>
       <div class="col-12 mt-3">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="" name="conditions" formControlName="conditions" required>
@@ -164,27 +175,27 @@
         </div>
       </div>
       <div class="col-12">
-        <label *ngIf="!this.valideRegister.valid"
+        <label *ngIf="!valideRegister.valid"
               for="error"
               class="form-label alert alert-warning col-md-12"
               role="alert">
               Por favor, cumplimente correctamente todos los campos para proceder al login.
               Si no es usuario registrado, pulse Registrar.
        </label>
-       <label *ngIf="this.valideRegister.valid && !this.getPassOk()"
+       <label *ngIf="valideRegister.valid && !getPassOk()"
               for="ok"
               class="fomr-label alert alert-danger col-md-12"
               rol="alert">
               Los campos de constraseña no coinciden.
         </label>
-        <label *ngIf="this.valideRegister.valid && this.getPassOk()"
+        <label *ngIf="valideRegister.valid && getPassOk()"
               for="ok"
               class="fomr-label alert alert-success col-md-12"
               rol="alert">
               Pulsa en el botón Login para acceder a tu usuario. Gracias.
        </label>
-       <button [disabled]="!this.valideRegister.valid || !this.getPassOk()" 
-              class="btn btn-outline-success col-md-4" 
+       <button [disabled]="!valideRegister.valid || !getPassOk()"
+              class="btn btn-outline-success col-md-4"
               type="submit">
               Registrate
         </button>

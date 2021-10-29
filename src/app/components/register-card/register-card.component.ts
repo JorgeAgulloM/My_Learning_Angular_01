@@ -1,6 +1,6 @@
 import { IndexComponent } from '../../pages/index/index.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterForm } from 'src/app/models/registerForm';
 
@@ -9,39 +9,34 @@ import { RegisterForm } from 'src/app/models/registerForm';
   selector: 'app-register-card',
   templateUrl: './register-card.component.html',
   styleUrls: ['./register-card.component.css'],
-  
+
 })
 export class RegisterCardComponent implements OnInit {
-
-  private passOk: boolean
-  private pass: string
-  private rePass: string
 
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
-    private index: IndexComponent,
-    private lifeValidator: LifeValidator
-    ) {
-      this.passOk = false
-      this.pass = ""
-      this.rePass = ""
-    }
+    private index: IndexComponent
+    ) {}
 
   valideRegister = this.fb.group({
-    name: ['',  Validators.minLength(3)],
-    lastName: ['',  Validators.minLength(3)],
+    name: ['', Validators.minLength(3)],
+    lastName: ['', Validators.minLength(3)],
     //Valido para españa, números que al menos, su valor, sea de 9 digitos
-    phone: ['',  Validators.min(100000000)],
-    email: ['',  Validators.email],
+    phone: ['', Validators.min(100000000)],
+    email: ['', Validators.compose([Validators.email, Validators.required])],
+    reEmail: ['', Validators.required],
     address: [''],
     state: [''],
     city: [''],
-    password: ['',  Validators.minLength(8)],
-    rePassword: ['',  Validators.required],
-    conditions: ['',  Validators.required]
-  },{
+    password: [''],
+    rePassword: [''],
+    conditions: ['', Validators.required],
+  })
 
+  valideRegisterPass = this.fb.group({
+    password: ['', Validators.minLength(8)],
+    rePassword: ['', Validators.required]
   })
 
   ngOnInit(): void {
@@ -55,11 +50,12 @@ export class RegisterCardComponent implements OnInit {
       this.valideRegister.value.lastName,
       this.valideRegister.value.phone,
       this.valideRegister.value.email,
+      this.valideRegister.value.reEmail,
       this.valideRegister.value.address,
       this.valideRegister.value.city,
       this.valideRegister.value.state,
-      this.valideRegister.value.password,
-      this.valideRegister.value.rePassword,
+      this.valideRegisterPass.value.password,
+      this.valideRegisterPass.value.rePassword,
       this.valideRegister.value.conditions
     )
 
@@ -68,61 +64,74 @@ export class RegisterCardComponent implements OnInit {
   }
 
   getPassOk(): boolean {
-    return this.passOk
+    return (this.valideRegisterPass.get('password')?.value === this.valideRegisterPass.get('rePassword')?.value)
+            && this.valideRegisterPass.get('password')?.valid == true && this.valideRegisterPass.get('rePassword')?.valid == true//this.valideRegisterPass.status == "VALID"//this.passOk
   }
 
-  getPass(): string {
-    return this.pass
+  getEmailOk(): boolean {
+
+    return false
   }
 
-  setPassOk(): void {
-    this.passOk = (
-      this.pass == this.rePass
-    )
+
+
+/*   getMyValidator() {
+    let valuePass = this.myValidatorPass
+    let valueEmail = this.myValidatorEmail
+
+    if (valuePass != null && valuePass == {'invalid': true}){
+      this.passOk = true
+    }
+
+
+    }
+
+  myValidatorPass(fGroup: FormGroup) {
+    let pass = fGroup.get('password')?.value
+    let rePass = fGroup.get('rePassword')?.value
+    let passOk = pass === rePass
+
+    this.passOk = passOk
+    console.log("passOK = " + this.passOk)
+
+    return passOk ? null : {'invalid': true}
   }
 
-  setPass(event: any): void {
-    this.pass = event.target.value
-    this.setPassOk()
-  }
+  myValidatorEmail(fGroup: FormGroup){
+    let email = fGroup.get('email')?.value
+    let reEmail = fGroup.get('reEmail')?.value
+    let emailOk = email === reEmail
 
-  getRePass(): string {
-    return this.rePass
-  }
+    this.emailOk = emailOk != null ? emailOk : false
+    console.log("emailOk = " + this.emailOk)
 
-  setRePass(event: any): void {
-    this.rePass = event.target.value
-    this.setPassOk()
-  }
+    return emailOk//emailOk ? null : {'invalid': true}
+  } */
 
   gotToLogin(): void {
     this.index.setShowLogin()
   }
 
-  probando(): void {
-    console.log(this.lifeValidator.reviewData())
-    
-  }
 
-}
 
-export class LifeValidator {
-
-  constructor(private fg: FormGroup,
-    private fc: FormControl){}
-
-  reviewData(): Array<number> {
-    let values = Array<number>(9)
+ /*  setLifeValidations(fg: FormGroup): void {
+    let values = Array<number>(10)
     let inputs = Array<string>('name', 'lastName', 'phone', 'email', 'address', 'city', 'state', 'password', 'rePasword', 'conditions')
-    
-      values.forEach(element => { 
-      const CONDITION_ONE: boolean = (this.fg.controls[inputs[element]].touched && this.fg.controls[inputs[element]].status != 'VALID')
-      const CONDITION_TWO: boolean = (this.fg.controls[inputs[element]].touched && this.fg.controls[inputs[element]].status == 'VALID')
-      values[element] = CONDITION_ONE ? 1 : 
-                        CONDITION_TWO ? 2 :
-                                        0 ;                 
-    });
 
-    return values
+      values.forEach(element => {
+        const CONDITION_ONE: boolean = (fg?.get(inputs[element])!.touched && fg?.get(inputs[element])!.status != 'VALID')
+        const CONDITION_TWO: boolean = (fg?.get(inputs[element])!.touched && fg?.get(inputs[element])!.status == 'VALID')
+        values[element] = CONDITION_ONE ? 1 : CONDITION_TWO ? 2 : 0
+      }
+    );
+
+    this.lifeValidations = values
   }
+
+  getLifeValidations(value: number): number {
+    this.setLifeValidations
+    console.log(this.lifeValidations[value])
+    return this.lifeValidations[value]
+  } */
+
 }

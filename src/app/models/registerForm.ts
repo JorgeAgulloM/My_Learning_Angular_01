@@ -4,18 +4,20 @@ export class RegisterForm{
     private _lastName: string
     private _phone: string
     private _email: string
+    private _reEmail: string
     private _address: string
     private _city: string
     private _state: string
     private _password: string
     private _rePassword: string
     private _conditions: boolean
-  
+
     constructor(
       name: string = "",
       lastName: string = "",
       phone: string = "",
       email: string = "",
+      reEmail: string = "",
       address: string = "",
       city: string = "",
       state: string = "",
@@ -27,6 +29,7 @@ export class RegisterForm{
       this._lastName = lastName
       this._phone = phone
       this._email = email
+      this._reEmail = email
       this._address = address
       this._city = city
       this._state = state
@@ -34,7 +37,7 @@ export class RegisterForm{
       this._rePassword = rePassword
       this._conditions = conditions
     }
-  
+
     public get_name(): string {
         return this._name;
     }
@@ -66,6 +69,14 @@ export class RegisterForm{
     public set_email(value: string): void {
         this._email = value;
     }
+
+    public get_reEmail(): string {
+      return this._reEmail;
+  }
+
+  public set_reEmail(value: string): void {
+      this._reEmail = value;
+  }
 
     public get_address(): string {
         return this._address;
@@ -114,5 +125,5 @@ export class RegisterForm{
     public set_conditions(value: boolean): void {
         this._conditions = value;
     }
-  
+
   }
