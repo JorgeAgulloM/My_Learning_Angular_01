@@ -12,7 +12,7 @@ import { UsersService } from 'src/app/services/users.service';
 
 export class LoginCardComponent {
 
-  //  Variables del Form, el servicio y la web index
+  //  Variables del Form, el servicio y la web index declaradas en constructor
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,

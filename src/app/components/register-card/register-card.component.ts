@@ -4,21 +4,23 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterForm } from 'src/app/models/registerForm';
 
-
 @Component({
   selector: 'app-register-card',
   templateUrl: './register-card.component.html',
   styleUrls: ['./register-card.component.css'],
 
 })
+
 export class RegisterCardComponent implements OnInit {
 
+  // Variables del form, servicio e index declaradas en el constructor
   constructor(
     private fb: FormBuilder,
     private userSrv: UsersService,
     private index: IndexComponent
     ) { }
 
+    //  Validación de los inputs de register
   valideRegister = this.fb.group({
     name: ['', Validators.minLength(3)],
     lastName: ['', Validators.minLength(3)],
@@ -37,6 +39,7 @@ export class RegisterCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //  Función para enviar los datos al servicio y que este los compruebe y almacene.
   sendRegister(): void{
     console.log("Enviado datos del nuevo usuario...")
 
@@ -54,18 +57,22 @@ export class RegisterCardComponent implements OnInit {
       this.valideRegister.value.conditions
     )
 
-    console.log(`Enviado el formulario con los valores ${value.get_email()} y ${value.get_password()}`)
     this.userSrv.newUserRegistered(value)
   }
 
+  //  get para saber si el pass es correcto en ambos campos
   getPassOk(): boolean {
+    //  Se llama a la función para que averigue si son corectos los valores
     return this.liveValidations('password', 'rePassword')
   }
 
+  //  get para saber si el email es correcto en ambos casos
   getEmailOk(): boolean {
+    //  Se llama a la función para que averigue si son corectos los valores
     return this.liveValidations('email', 'reEmail')
   }
 
+  //  Función para averiguar si los valores que se le pasan son identicos y validos. 
   liveValidations(value: string, reValue: string): boolean {
     //  Si aun no se han manipulado los inputs
     if (!this.valideRegister.get(value)?.touched || !this.valideRegister.get(reValue)?.touched ) {
@@ -84,6 +91,7 @@ export class RegisterCardComponent implements OnInit {
 
   }
 
+  //  Función para navegar al Login
   gotToLogin(): void {
     this.index.setShowLogin()
   }

@@ -1,4 +1,3 @@
-import { PipesModule } from './../pipes/pipes.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginCardComponent } from './login-card/login-card.component';
@@ -14,8 +13,7 @@ import { ReactiveFormsModule} from '@angular/forms';
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    PipesModule
+    ReactiveFormsModule
   ],
   exports: [
     LoginCardComponent,

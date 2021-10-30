@@ -7,11 +7,14 @@ import { RegisterForm } from '../models/registerForm';
 })
 export class UsersService {
 
+  //  Propiedad de la clase
   private registerUser = new Array<RegisterForm>()
 
+  //  Se inicia el router en el constructor
   constructor(
     private routing: Router
     ) {
+      //  Se crea un usuario inicial para poder acceder a login
     this.registerUser.push(new RegisterForm(
         "Jorge",
         "Agulló Martín",
@@ -28,9 +31,11 @@ export class UsersService {
       )
     }
 
+    //  Función para saber datos de login del usuario
   queryUserRegitered(email: string, pass: string): number {
-    let result: number = -3 //Error en la lectura del Array, en caso de que no
+    let result: number = -3 //Error en la lectura del Array, Se modifica si las siguientes consultas se realizan.
 
+    //  Comprueba los elementos del registro para saber si existe el usuaio y su comparar su clave.
     this.registerUser.forEach(element => {
       if (element.get_email() == email) {
         if (element.get_password() == pass) {
@@ -46,12 +51,15 @@ export class UsersService {
       }
     });
 
-    return result
+    return result //Se devuelve un resuttado para conocer la información del usuario
   }
 
+  // Función que averigua si existe o no el usuarioy actua en consecuencia
   userLogin(email: string, pass: string): void {
+    //  llama a la revisión de datos del usuario
     let result: number = this.queryUserRegitered(email, pass)
 
+    //  Dependiendo de la info que se reciba...
     switch(result){
       case -1:
         alert("Usuario no registrado")
@@ -62,17 +70,18 @@ export class UsersService {
       case -3:
         alert("Error en la consulta.")
         break
-      default:{
-        //this.routing.navigate(['./home', this.getRegisterUser(this.registerUser[result].get_email())])
+      default:{ //  Se navega hasta home y se pasa el "id" o email de usuario registrado
         this.routing.navigate(['./home', this.registerUser[result].get_email()])
         break
       }
     }
   }
 
+  //  Obtención de los datos del usuario.
   newUserRegistered(registerUser = new RegisterForm): void{
+    //  Se pretende conocer si existe o no el usuario
     let result: number = this.queryUserRegitered(registerUser.get_email(), "00000000")
-    console.log('newUserRegistered' + result)
+    //  Si no existe se almacenan
     if (result == -1) {
       this.registerUser.push(new RegisterForm(
         registerUser.get_name(),
@@ -88,18 +97,19 @@ export class UsersService {
         registerUser.get_conditions())
         )
 
+        // navega a home y pasa el id de usuario
         this.routing.navigate(['./home', this.registerUser[this.registerUser.length -1].get_email()])
 
     } else {
+
+      // informa de la coincidencia
       alert("El usuario ya está registrado, por favor, introduce otro email.")
     }
   }
 
+  //  Busca a un usuario registrado
   getRegisterUser(email: string): RegisterForm {
-    console.log(email)
-    console.log('Valor de getRegisterUser' + this.registerUser.filter(x => x.get_email() == email)[0])
     return this.registerUser.filter(x => x.get_email() == email)[0]
-
   }
 
 }
