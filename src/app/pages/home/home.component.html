@@ -9,96 +9,123 @@
   </head>
 
   <body class="bg-success p-2 text-dark bg-opacity-10">
-    <header class="p-4 bg-white text-black shadow-lg rounded ">
-      <div class="container col-md-12">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-
-          <div class="col-lg-3 me-lg-auto text-primary">
-            <h1><em><strong>RUNNERS</strong></em></h1>
-          </div>
-            <div class="row">
-              <ul class="nav col-md-12 justify-content-center">
-                <li class="m-2">
-                    <div class="dropdown m-2">
-                    <label class="form-label dropdown-toggle"
-                          type="button"
-                          id="dropdownMenuButton1"
-                          data-bs-toggle="dropdown"
-                          aria-expanded="true">
-                      Características
-                    </label>
-                    <ul class="dropdown-menu dropdown-menu-start"
-                        aria-labelledby="dropdownMenuButton1">
+    <header class="p-2 bg-white text-black shadow-lg rounded ">
+      <div class="container-fluid">
+        <div class="nav justify-content-center">
+          <div class="nav-item col-md-4 text-black-50">
+            <h1>
+              <em>
+                <strong>Bienvenido a </strong>
+              </em>
+              <em class="text-primary">
+                <strong>RUNNERS</strong>
+              </em>
+            </h1>
+          </div> 
+          <div class="nav-item col-md-4">
+            <ul class="nav justify-content-around col-md-12 ">
+              <li class="m-2">
+                  <div class="dropdown m-2">
+                  <label class="form-label dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="true">
+                    Características
+                  </label>
+                  <ul class="dropdown-menu dropdown-menu-start"
+                      aria-labelledby="dropdownMenuButton1">
+                    <div class="nav-item justify-content-center">
                       <li>Ej01 M11 Servicios y procesos</li>
-                      <li>Software empleado:</li>
-                      <ul>
-                        <li>Angular 12.2.11</li>
-                        <li>Bootstrap 5.1</li>
-                      </ul>
-                    </ul>
-                  </div>
-                </li>
-                <li class="m-2">
-                  <div class="dropdown m-2">
-                    <label class="form-label dropdown-toggle"
-                          type="button"
-                          id="dropdownMenuButton2"
-                          data-bs-toggle="dropdown">
-                      FAQs
-                    </label>
-                    <ul class="dropdown-menu dropdown-menu-start"
-                        aria-labelledby="dropdownMenuButton2">
-                      <li>
-                        <a href="https://angular.io/"
-                          target="blank"
-                          style="text-decoration: none;">
-                          ¿Que es Angular?
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://getbootstrap.com/"
-                          target="blank"
-                          style="text-decoration: none;">
-                          ¿Que es Bootstrap?
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://www.cevonline.es/"
-                          target="blank"
-                          style="text-decoration: none;">
-                          ¿Que es CEV Online?
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <li class="m-2">
-                  <div class="dropdown m-2">
-                    <label class="form-label dropdown-toggle"
-                          type="button"
-                          id="dropdownMenuButton3"
-                          data-bs-toggle="dropdown">
-                      Sobre mi
-                    </label>
-                    <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdownMenuButton3">
-                      <li><h6>Jorge Agulló Martín</h6></li>
-                      <li>Ciclo: 2º TS DAM</li>
-                      <li><a href="https://github.com/JorgeAgulloM">Mi GitHub</a></li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-              <div class="text-end row col-md-4">
-                <div *ngIf="this.getIsUserLogIn()">
-                  <button type="button"
-                        class="btn btn-warning me-2"
-                        (click)="this.closeSession()">Cerrar sesión
-                  </button>
+                    <li>Software empleado:</li>
+                    <div>
+                      <li>- Angular 12.2.11</li>
+                      <li>- Bootstrap 5.1</li>
+                    </div>
+                    </div>
+                  </ul>
                 </div>
-              </div>
+              </li>
+              <li class="m-2">
+                <div class="dropdown m-2">
+                  <label class="form-label dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton2"
+                        data-bs-toggle="dropdown">
+                    FAQs
+                  </label>
+                  <ul class="dropdown-menu dropdown-menu-start"
+                      aria-labelledby="dropdownMenuButton2">
+                    <li>
+                      <a href="https://angular.io/"
+                        target="blank"
+                        style="text-decoration: none;">
+                        ¿Que es Angular?
+                      </a>
+                    </li>
+                    <li><br></li>
+                    <li>
+                      <a href="https://getbootstrap.com/"
+                        target="blank"
+                        style="text-decoration: none;">
+                        ¿Que es Bootstrap?
+                      </a>
+                    </li>
+                    <li><br></li>
+                    <li>
+                      <a href="https://www.cevonline.es/"
+                        target="blank"
+                        style="text-decoration: none;">
+                        ¿Que es CEV Online?
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+              <li class="m-2">
+                <div class="dropdown m-2">
+                  <label class="form-label dropdown-toggle"
+                        type="button"
+                        id="dropdownMenuButton3"
+                        data-bs-toggle="dropdown">
+                    Sobre mi
+                  </label>
+                  <ul class="dropdown-menu dropdown-menu-start" 
+                    aria-labelledby="dropdownMenuButton3">
+                    <li>
+                      <h6>
+                        Jorge Agulló Martín
+                      </h6>
+                    </li>
+                    <li><br></li>
+                    <li>
+                      Ciclo: 2º TS DAM
+                    </li>
+                    <li><br></li>
+                    <li>
+                      <a href="https://github.com/JorgeAgulloM">
+                        Mi GitHub
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-item col-md-4 align-self-center">
+            <div class="nav justify-content-end" 
+                *ngIf="this.getIsUserLogIn()" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Pulsa para cerrar sesión">
+              <button type="button"
+                    class="btn btn-warning me-2"
+                    (click)="this.closeSession()">Cerrar sesión
+              </button>
+            </div>
           </div>
         </div>
+      </div>
     </header>
 
     <main class="mt-5 mb-5">
@@ -106,7 +133,7 @@
           <div class="col-8 col-sm-4 d-flex justify-content-center align-items-center">
             <div class="card rounded shadow-lg p-2"
                 style="width: 38rem;">
-              <img src="../../../assets/images/iconRunning.png" class="card-img-top " alt="...">
+              <img src="../../../assets/images/iconRunners.png" class="card-img-top " alt="...">
               <div class="card-body">
                 <h5 class="card-title">Bienvenido:</h5>
                 <p class="card-text"><strong>{{this.getInfoUserValue(0)}}</strong></p>
@@ -116,7 +143,7 @@
                 <li class="list-group-item">Usuario/e-mail: <strong>{{this.getInfoUserValue(3)}}</strong></li>
                 <li class="list-group-item">Nombre completo: <strong>{{this.getInfoUserValue(0)}}, {{this.getInfoUserValue(1)}}</strong></li>
                 <li class="list-group-item">Teléfono: <strong>{{this.getInfoUserValue(2)}}</strong></li>
-                <li class="list-group-item">Dirección: <strong>{{this.getInfoUserValue(4)}}, {{this.getInfoUserValue(5)}}, {{this.getInfoUserValue(6)}}</strong></li>
+                <li class="list-group-item">Dirección: <strong>{{this.getInfoUserValue(5)}}, {{this.getInfoUserValue(6)}}, {{this.getInfoUserValue(7)}}</strong></li>
                 <li class="list-group-item">La contraseña: <strong>Solo tú sabes cual es</strong></li>
               </ul>
               <div class="card-body">
@@ -137,7 +164,7 @@
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.99designs.com%2Ficon-button-design%2Fcontests%2Fdesign-ios-app-icon-portraying-runner-motion-367686&psig=AOvVaw1OZbm-8eyuLslhpSTscFII&ust=1635359513829000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNjX1KLb6PMCFQAAAAAdAAAAABAK"
+                    <a href="https://www.nicepng.com/ourpic/u2r5a9r5q8i1u2w7_runner-icon-woman-runner/"
                       target="blank"
                       style="text-decoration: none;">Imagen del icono
                     </a>

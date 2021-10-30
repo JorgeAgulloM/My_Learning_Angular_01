@@ -17,7 +17,7 @@ export class RegisterCardComponent implements OnInit {
     private fb: FormBuilder,
     private userSrv: UsersService,
     private index: IndexComponent
-    ) {}
+    ) { }
 
   valideRegister = this.fb.group({
     name: ['', Validators.minLength(3)],
@@ -25,18 +25,13 @@ export class RegisterCardComponent implements OnInit {
     //Valido para españa, números que al menos, su valor, sea de 9 digitos
     phone: ['', Validators.min(100000000)],
     email: ['', Validators.compose([Validators.email, Validators.required])],
-    reEmail: ['', Validators.required],
+    reEmail: ['', Validators.compose([Validators.email, Validators.required])],
     address: [''],
     state: [''],
     city: [''],
-    password: [''],
-    rePassword: [''],
-    conditions: ['', Validators.required],
-  })
-
-  valideRegisterPass = this.fb.group({
     password: ['', Validators.minLength(8)],
-    rePassword: ['', Validators.required]
+    rePassword: ['', Validators.minLength(8)],
+    conditions: ['', Validators.required],
   })
 
   ngOnInit(): void {
@@ -54,8 +49,8 @@ export class RegisterCardComponent implements OnInit {
       this.valideRegister.value.address,
       this.valideRegister.value.city,
       this.valideRegister.value.state,
-      this.valideRegisterPass.value.password,
-      this.valideRegisterPass.value.rePassword,
+      this.valideRegister.value.password,
+      this.valideRegister.value.rePassword,
       this.valideRegister.value.conditions
     )
 
@@ -64,74 +59,33 @@ export class RegisterCardComponent implements OnInit {
   }
 
   getPassOk(): boolean {
-    return (this.valideRegisterPass.get('password')?.value === this.valideRegisterPass.get('rePassword')?.value)
-            && this.valideRegisterPass.get('password')?.valid == true && this.valideRegisterPass.get('rePassword')?.valid == true//this.valideRegisterPass.status == "VALID"//this.passOk
+    return this.liveValidations('password', 'rePassword')
   }
 
   getEmailOk(): boolean {
-
-    return false
+    return this.liveValidations('email', 'reEmail')
   }
 
+  liveValidations(value: string, reValue: string): boolean {
+    //  Si aun no se han manipulado los inputs
+    if (!this.valideRegister.get(value)?.touched || !this.valideRegister.get(reValue)?.touched ) {
+      //this.valideRegister.get(value)?.valid
+      return true
 
+    //  Si se han manipulado y el input 'principal' es correcto, además de que ambos campos son identicos
+    } else if (this.valideRegister.get(value)?.valid && 
+              (this.valideRegister.get(value)?.value === this.valideRegister.get(reValue)?.value)) {
 
-/*   getMyValidator() {
-    let valuePass = this.myValidatorPass
-    let valueEmail = this.myValidatorEmail
-
-    if (valuePass != null && valuePass == {'invalid': true}){
-      this.passOk = true
+              return true
+    } else {
+      // En caso de que no se cumpla lo anterior
+      return false
     }
 
-
-    }
-
-  myValidatorPass(fGroup: FormGroup) {
-    let pass = fGroup.get('password')?.value
-    let rePass = fGroup.get('rePassword')?.value
-    let passOk = pass === rePass
-
-    this.passOk = passOk
-    console.log("passOK = " + this.passOk)
-
-    return passOk ? null : {'invalid': true}
   }
-
-  myValidatorEmail(fGroup: FormGroup){
-    let email = fGroup.get('email')?.value
-    let reEmail = fGroup.get('reEmail')?.value
-    let emailOk = email === reEmail
-
-    this.emailOk = emailOk != null ? emailOk : false
-    console.log("emailOk = " + this.emailOk)
-
-    return emailOk//emailOk ? null : {'invalid': true}
-  } */
 
   gotToLogin(): void {
     this.index.setShowLogin()
   }
-
-
-
- /*  setLifeValidations(fg: FormGroup): void {
-    let values = Array<number>(10)
-    let inputs = Array<string>('name', 'lastName', 'phone', 'email', 'address', 'city', 'state', 'password', 'rePasword', 'conditions')
-
-      values.forEach(element => {
-        const CONDITION_ONE: boolean = (fg?.get(inputs[element])!.touched && fg?.get(inputs[element])!.status != 'VALID')
-        const CONDITION_TWO: boolean = (fg?.get(inputs[element])!.touched && fg?.get(inputs[element])!.status == 'VALID')
-        values[element] = CONDITION_ONE ? 1 : CONDITION_TWO ? 2 : 0
-      }
-    );
-
-    this.lifeValidations = values
-  }
-
-  getLifeValidations(value: number): number {
-    this.setLifeValidations
-    console.log(this.lifeValidations[value])
-    return this.lifeValidations[value]
-  } */
 
 }

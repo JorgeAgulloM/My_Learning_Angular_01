@@ -10,64 +10,84 @@
   <title>Login</title>
 </head>
 <body>
-  <div class="d-flex row g-2 p-3 mt-lg-12 shadow-lg bg-body rounded">
+  <div class="row justify-content-center p-2 shadow-lg mt-3 bg-body rounded">
+
+    <div class="col-md-12 p-2">
+      <label class="form-control bg-primary text-white">Por favor, introduce tus credenciales</label>
+    </div>
+
     <form class="row"
       name="loginForm"
       [formGroup]="valideLogin"
       (ngSubmit)="this.sendLogin()">
       <div class="col-md-12">
-        <label for="email"
-          class="form-label">Dirección de correo</label>
-        <div class="input-group needs-validation">
+        <div class="input-group mt-3 form-floating">
+          <input class="form-control col-md-4"
+                type="email"      
+                name="email"
+                formControlName="email"
+                placeholder="Dirección de correo"
+                required
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Introduce el email con el que te registraste">
+          <label for="email"
+                class="form-label">Dirección de correo</label>
           <span class="input-group-text"id="email">@</span>
-          <input name="email"
-            id="email"
-            type="text"
-            class="form-control col-md-4"
-            formControlName="email"
-            placeholder="micorreo@dominio.com"
-            required>
         </div>
       </div>
-      <div class="col-md-12">
+      <div class="input-group col-md-12 mt-3 form-floating">
+        <input class="form-control"
+              type="password"
+              id="loginPassword"
+              formControlName="password"
+              placeholder="Contraseña"
+              required
+              data-bs-toggle="tooltip" 
+              data-bs-placement="left" 
+              title="Introduce tu contraseña">
+              <button class="btn btn-primary rounded-end" 
+                      type="button" 
+                      id="ShowLoginPassword"
+                      onclick="mostrarLoginPassword()">
+                  <span class="fa fa-eye-slash lIcon"></span>
+                </button>
         <label for="password"
-          class="form-label">Contraseña</label>
-        <input id="password"
-          name="password"
-          type="password"
-          class="form-control"
-          formControlName="password"
-          placeholder="Contraseña. Recuerde, mínimo 8 caracteres"
-          required>
-
+              class="form-label ms-2">Contraseña</label>
       </div>
       <div class="col-md-12 mt-4">
-        <label *ngIf="!this.valideLogin.valid"
+        <label class="form-label alert alert-warning col-md-12"
+              *ngIf="!this.valideLogin.valid"
                for="error"
-               class="form-label alert alert-warning col-md-12"
                role="alert">
-               Por favor, cumplimente correctamente todos los campos para proceder al login.
+               Por favor, cumplimente correctamente todos los campos para entrar.
                Si no es usuario registrado, pulse Registrar.
               </label>
-        <label *ngIf="this.valideLogin.valid"
+        <label class="fomr-label alert alert-success col-md-12"
+              *ngIf="this.valideLogin.valid"
                for="ok"
-               class="fomr-label alert alert-success col-md-12"
                rol="alert">
                Pulsa en el botón Login para acceder a tu usuario. Gracias.
               </label>
 
-        <button *ngIf="this.valideLogin.valid"
+        <button class="btn btn-primary m-2 col-md-6"
+               *ngIf="this.valideLogin.valid"
                 type="submit"
-                class="btn btn-primary m-2 col-md-2" >
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Si lo ves, pulsa para entrar">
                 Login
               </button>
       </div>
     </form>
     <div class="row position-relative">
       <div class="col-md-12 mt-2">
-        <button *ngIf="!this.valideLogin.valid"
-                class="btn btn-primary m-2 col-md-4"
-                (click)="goToRegister()">
+        <button class="btn btn-primary m-2 col-md-6"
+               *ngIf="!this.valideLogin.valid"
+                (click)="goToRegister()"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Registrate si no tienes una cuenta">
                 Registrar nuevo usuario
               </button>
       </div>

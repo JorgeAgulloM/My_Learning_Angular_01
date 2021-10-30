@@ -8,8 +8,8 @@
   <title>Register</title>
 </head>
 <body>
-  <div class="d-flex row g-2 shadow-lg p-3 mt-lg-3 bg-body rounded">
 
+  <div class="row justify-content-center shadow-lg p-2 mt-3 bg-body rounded">
     <div class="col-md-12 p-2">
       <label class="form-control bg-primary text-white">Registro para el nuevo usuario</label>
     </div>
@@ -18,76 +18,104 @@
           [formGroup]="valideRegister"
           (ngSubmit)="sendRegister()"
           name="formRegister">
-      <div class="col-md-6 form-floating">
-        <input
+      <div class="col-md-6 mt-3 form-floating">
+        <input class="form-control"
               type="text"
-              class="form-control"
               id="name"
               formControlName="name"
               placeholder="Nombre"
-              required>
+              required
+              data-bs-toggle="tooltip" 
+              data-bs-placement="left" 
+              title="Tu nombre, mínimo 3 caracteres">
         <label for="name" class="form-label ms-2">Nombre</label>
       </div>
-      <div class="col-md-6 form-floating">
-        <input type="text"
-              class="form-control"
+      <div class="col-md-6 mt-3 form-floating">
+        <input class="form-control"
+              type="text"
               id="lastName"
               formControlName="lastName"
               placeholder="Apellidos"
-              required>
+              required
+              data-bs-toggle="tooltip" 
+              data-bs-placement="left" 
+              title="Tus apellidos, mínimo 3 caracteres">
         <label for="lastName" class="form-label ms-2">Apellidos</label>
       </div>
       <div class="col-md-7 mt-3 form-floating">
-        <input type="number"
-              class="form-control"
+        <input class="form-control"
+              type="number"
               id="phone"
               formControlName="phone"
               placeholder="Télefono"
-              required>
+              required
+              data-bs-toggle="tooltip" 
+              data-bs-placement="left" 
+              title="Tu número tlfn, mínimo 9 cifras">
         <label for="phone" class="form-label ms-2">Teléfono</label>
       </div>
       <div class="col-md-6 mt-3">
         <div class="input-group form-floating">
-          <input type="text"
-                class="form-control"
+          <input class="form-control"
+                type="text"
                 id="email"
                 formControlName="email"
-                placeholder="micorreo@dominio.com"
-                required>
+                placeholder="Email"
+                required
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Un email en formato habitual nombre@domino.com">
           <label for="email" class="form-label">Email</label>
           <span class="input-group-text" id="email">@</span>
         </div>
       </div>
       <div class="col-md-6 mt-3">
         <div class="input-group form-floating">
-          <input type="text"
-                class="form-control"
+          <input class="form-control"
+                type="text"
                 id="reEmail"
                 formControlName="reEmail"
-                placeholder="micorreo@dominio.com"
-                required>
+                placeholder="Repita el email"
+                required
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Repite el email">
           <label for="reEmail" class="form-label">Repita el email</label>
           <span class="input-group-text" id="reEmail">@</span>
         </div>
       </div>
+      <div>
+        <label class="form-label alert alert-danger col-md-12"
+             *ngIf="!getEmailOk()"
+              for="error"
+              role="alert">
+              Por favor, revise los campos Email.
+        </label>
+      </div>
       <div class="col-md-12 mt-3 form-floating">
-        <input type="text"
-              class="form-control"
+        <input class="form-control"
+              type="text"
               id="address"
               formControlName="address"
-              placeholder="C/ de la Providencia, n 7 3º">
+              placeholder="C/ de la Providencia, n 7 3º"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="left" 
+              title="Tu dirección, no es obligatoria">
         <label for="address" class="form-label ms-2">Dirección</label>
       </div>
       <div class="col-md-6 mt-3 form-floating">
-        <input type="text"
-              class="form-control"
+        <input class="form-control"
+              type="text"
               id="city"
               formControlName="city"
-              placeholder="Madrid">
+              placeholder="Ciudad"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="left" 
+              title="Tu ciudad, no es obligatoria">
         <label for="city" class="form-label ms-2">Ciudad</label>
       </div>
       <div class="col-md-6 mt-3 form-floating">
-        <select class="form-select" id="state" formControlName="state">
+        <select class="form-select" id="state" formControlName="state" data-bs-toggle="tooltip" data-bs-placement="left" title="Tu provincia, no es obligatoria">
           <option selected disabled value="">Selecciona...</option>
           <option value="">- selecciona -</option>
                         <option value="15">A coru&#241;a</option>
@@ -146,66 +174,102 @@
         </select>
         <label for="state" class="form-label">Provincia</label>
       </div>
-      <form class="row" [formGroup]="valideRegisterPass">
-        <div class="col-md-6 mt-3 form-floating">
-          <input type="text"
-                class="form-control"
+      <div class="col-6">
+        <div class="input-group  mt-3 form-floating">
+          <input class="form-control rounded-start"
+                type="password"
                 id="password"
+                name="password"
                 formControlName="password"
                 placeholder="Debes usar mínimo 8 caracteres"
-                required>
+                required
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Elge una contraseña de, al menos, 8 caracteres">
+                <button class="btn btn-primary rounded-end" 
+                      type="button" 
+                      id="ShowPassword"
+                      onclick="mostrarPassword()">
+                  <span class="fa fa-eye-slash icon"></span>
+                </button>
           <label for="password" class="form-label ms-2">Contraseña</label>
         </div>
-        <div class="col-md-6 mt-3 form-floating">
-          <input type="text"
-                class="form-control"
+      </div>
+      <div class="col-6">
+        <div class="input-group mt-3 form-floating">
+          <input class="form-control"
+                type="password"
                 id="rePassword"
+                name="rePassword"
                 formControlName="rePassword"
                 placeholder="Por favor, repite la contraseña"
-                required>
-          <label for="rePassword" class="form-label ms-2">Repite la contraseña</label>
+                required
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Repite la contraseña">
+                <button class="btn btn-primary rounded-end" 
+                      type="button" 
+                      id="ShowRePassword"
+                      onclick="mostrarRePassword()">
+                  <span class="fa fa-eye-slash rIcon"></span>
+                </button>
+          <label for="rePassword" class="form-label ms-2">Repita la contraseña</label>
         </div>
-      </form>
+      </div>
+      <label class="fomr-label alert alert-danger col-md-12"
+           *ngIf="!getPassOk()"
+            for="ok"
+            rol="alert">
+            Los campos de constraseña no coinciden o no son válidos. La contraseña debe contener, al menos, 8
+            caracteres.
+      </label>
       <div class="col-12 mt-3">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" name="conditions" formControlName="conditions" required>
+        <div class="form-check form-switch">
+          <input class="form-check-input" 
+          type="checkbox" 
+          name="conditions" 
+          role="switch"
+          formControlName="conditions" 
+          required
+          data-bs-toggle="tooltip" 
+          data-bs-placement="left" 
+          title="Espero que te las hayas leido">
           <label class="form-check-label" for="invalidCheck">
             Acepto las condiciones de registro.
           </label>
         </div>
       </div>
       <div class="col-12">
-        <label *ngIf="!valideRegister.valid"
+        <label class="form-label alert alert-warning col-md-12"
+              *ngIf="!valideRegister.valid"
               for="error"
-              class="form-label alert alert-warning col-md-12"
               role="alert">
-              Por favor, cumplimente correctamente todos los campos para proceder al login.
-              Si no es usuario registrado, pulse Registrar.
+              Por favor, cumplimente correctamente todos los campos para contiuar.
        </label>
-       <label *ngIf="valideRegister.valid && !getPassOk()"
+        <label class="fomr-label alert alert-success col-md-12"
+             *ngIf="valideRegister.valid && getPassOk()"
               for="ok"
-              class="fomr-label alert alert-danger col-md-12"
               rol="alert">
-              Los campos de constraseña no coinciden.
-        </label>
-        <label *ngIf="valideRegister.valid && getPassOk()"
-              for="ok"
-              class="fomr-label alert alert-success col-md-12"
-              rol="alert">
-              Pulsa en el botón Login para acceder a tu usuario. Gracias.
+              Ya puede pulsar el botón Registro para continuar. Gracias.
        </label>
-       <button [disabled]="!valideRegister.valid || !getPassOk()"
-              class="btn btn-outline-success col-md-4"
-              type="submit">
-              Registrate
+       <button class="btn btn-success col-md-4"
+              [disabled]="!valideRegister.valid || !getPassOk()"
+              type="submit"
+              data-bs-toggle="tooltip" 
+              data-bs-placement="left" 
+              title="Ahora, ya puedes registrarte pulsando el botón">
+              Registro
         </button>
       </div>
     </form>
 
     <div class="row position-relative">
       <div class="col-md-12 mt-2">
-        <button class="btn btn-outline-primary col-md-4"
-                (click)="gotToLogin()">
+        <button class="btn btn-primary col-md-4"
+                (click)="gotToLogin()"
+                data-bs-toggle="tooltip" 
+                data-bs-placement="left" 
+                title="Puedes volver al login, si quieres">
                 Volver a Login
         </button>
       </div>
