@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
       this.setInfoUser(this.usersSrv.getRegisterUser('default'))
 
     //  Evita que se acceda a home desde la barra de navegación
-    if (this.infoUser == null || this.infoUser.length == 0) {
+    if (this.infoUser == null || this.infoUser.length == 0 || !this.userLogIn) {
       this.routing.navigate(['./index'])
     }
   }
@@ -54,16 +54,16 @@ export class HomeComponent implements OnInit {
 
   public getInfoUserValue(value: number): string {
     return this.infoUser[value]
-}
+  }
 
   //  Setter modificado para devolver el valor del parámetro solicitado
   public setInfoUser(valueDicc = this.activeRouting.snapshot.params): void {
-    this.setUserLogIn(true)
+    this.userLogIn = true
 
     Object.entries(valueDicc).forEach(
       ([key, value]) => this.infoUser.push(value)
     )
-      
+
   }
 
   //  Cierra la sesión vaciando los tados del usuario, pasando userLogin a false y devolviendo la web a index y login.

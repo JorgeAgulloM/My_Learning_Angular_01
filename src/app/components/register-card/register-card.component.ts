@@ -1,6 +1,6 @@
 import { IndexComponent } from '../../pages/index/index.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { RegisterForm } from 'src/app/models/registerForm';
 
@@ -29,8 +29,8 @@ export class RegisterCardComponent implements OnInit {
     email: ['', Validators.compose([Validators.email, Validators.required])],
     reEmail: ['', Validators.compose([Validators.email, Validators.required])],
     address: [''],
-    state: [''],
     city: [''],
+    state: [''],
     password: ['', Validators.minLength(8)],
     rePassword: ['', Validators.minLength(8)],
     conditions: ['', Validators.required],
@@ -72,7 +72,7 @@ export class RegisterCardComponent implements OnInit {
     return this.liveValidations('email', 'reEmail')
   }
 
-  //  Función para averiguar si los valores que se le pasan son identicos y validos. 
+  //  Función para averiguar si los valores que se le pasan son identicos y validos.
   liveValidations(value: string, reValue: string): boolean {
     //  Si aun no se han manipulado los inputs
     if (!this.valideRegister.get(value)?.touched || !this.valideRegister.get(reValue)?.touched ) {
@@ -80,7 +80,7 @@ export class RegisterCardComponent implements OnInit {
       return true
 
     //  Si se han manipulado y el input 'principal' es correcto, además de que ambos campos son identicos
-    } else if (this.valideRegister.get(value)?.valid && 
+    } else if (this.valideRegister.get(value)?.valid &&
               (this.valideRegister.get(value)?.value === this.valideRegister.get(reValue)?.value)) {
 
               return true

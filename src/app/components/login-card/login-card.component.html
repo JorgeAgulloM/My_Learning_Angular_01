@@ -23,13 +23,13 @@
       <div class="col-md-12">
         <div class="input-group mt-3 form-floating">
           <input class="form-control col-md-4"
-                type="email"      
+                type="email"
                 name="email"
                 formControlName="email"
                 placeholder="Dirección de correo"
                 required
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Introduce el email con el que te registraste">
           <label for="email"
                 class="form-label">Dirección de correo</label>
@@ -43,11 +43,11 @@
               formControlName="password"
               placeholder="Contraseña"
               required
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
               title="Introduce tu contraseña">
-              <button class="btn btn-primary rounded-end" 
-                      type="button" 
+              <button class="btn btn-primary rounded-end"
+                      type="button"
                       id="ShowLoginPassword"
                       onclick="mostrarLoginPassword()">
                   <span class="fa fa-eye-slash lIcon"></span>
@@ -70,23 +70,23 @@
                Pulsa en el botón Login para acceder a tu usuario. Gracias.
               </label>
 
-        <button class="btn btn-primary m-2 col-md-6"
+        <button class="btn btn-primary m-2 col-md-4"
                *ngIf="this.valideLogin.valid"
                 type="submit"
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Si lo ves, pulsa para entrar">
                 Login
               </button>
       </div>
     </form>
     <div class="row position-relative">
-      <div class="col-md-12 mt-2">
-        <button class="btn btn-primary ms-2 mb-2 col-md-6"
+      <div class="col-md-12 m-2">
+        <button class="btn btn-primary mb-2 col-md-4"
                *ngIf="!this.valideLogin.valid"
                 (click)="goToRegister()"
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Registrate si no tienes una cuenta">
                 Registrar nuevo usuario
               </button>

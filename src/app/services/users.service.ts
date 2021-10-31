@@ -31,9 +31,12 @@ export class UsersService {
       )
     }
 
-    //  Función para saber datos de login del usuario
+      /* Función para saber datos de login del usuario.
+      Los número negativos representas estados fallidos, del 0 en adelante referencia la posición en el
+      array de datos.
+      */
   queryUserRegitered(email: string, pass: string): number {
-    let result: number = -3 //Error en la lectura del Array, Se modifica si las siguientes consultas se realizan.
+    let result: number = -3 //Error en la lectura del Array, Se modifica si las siguientes condiciones se realizan
 
     //  Comprueba los elementos del registro para saber si existe el usuaio y su comparar su clave.
     this.registerUser.forEach(element => {
@@ -54,7 +57,7 @@ export class UsersService {
     return result //Se devuelve un resuttado para conocer la información del usuario
   }
 
-  // Función que averigua si existe o no el usuarioy actua en consecuencia
+  // Función que averigua si existe o no el usuario y actua en consecuencia
   userLogin(email: string, pass: string): void {
     //  llama a la revisión de datos del usuario
     let result: number = this.queryUserRegitered(email, pass)

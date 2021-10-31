@@ -25,8 +25,8 @@
               formControlName="name"
               placeholder="Nombre"
               required
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
               title="Tu nombre, mínimo 3 caracteres">
         <label for="name" class="form-label ms-2">Nombre</label>
       </div>
@@ -37,8 +37,8 @@
               formControlName="lastName"
               placeholder="Apellidos"
               required
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
               title="Tus apellidos, mínimo 3 caracteres">
         <label for="lastName" class="form-label ms-2">Apellidos</label>
       </div>
@@ -49,8 +49,8 @@
               formControlName="phone"
               placeholder="Télefono"
               required
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
               title="Tu número tlfn, mínimo 9 cifras">
         <label for="phone" class="form-label ms-2">Teléfono</label>
       </div>
@@ -62,8 +62,8 @@
                 formControlName="email"
                 placeholder="Email"
                 required
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Un email en formato habitual nombre@domino.com">
           <label for="email" class="form-label">Email</label>
           <span class="input-group-text" id="email">@</span>
@@ -77,8 +77,8 @@
                 formControlName="reEmail"
                 placeholder="Repita el email"
                 required
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Repite el email">
           <label for="reEmail" class="form-label">Repita el email</label>
           <span class="input-group-text" id="reEmail">@</span>
@@ -97,10 +97,7 @@
               type="text"
               id="address"
               formControlName="address"
-              placeholder="C/ de la Providencia, n 7 3º"
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
-              title="Tu dirección, no es obligatoria">
+              placeholder="Dirección">
         <label for="address" class="form-label ms-2">Dirección</label>
       </div>
       <div class="col-md-6 mt-3 form-floating">
@@ -108,69 +105,64 @@
               type="text"
               id="city"
               formControlName="city"
-              placeholder="Ciudad"
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
-              title="Tu ciudad, no es obligatoria">
+              placeholder="Ciudad">
         <label for="city" class="form-label ms-2">Ciudad</label>
       </div>
       <div class="col-md-6 mt-3 form-floating">
-        <select class="form-select" id="state" formControlName="state" data-bs-toggle="tooltip" data-bs-placement="left" title="Tu provincia, no es obligatoria">
-          <option selected disabled value="">Selecciona...</option>
-          <option value="">- selecciona -</option>
-                        <option value="15">A coru&#241;a</option>
-                        <option value="1">&#193;lava</option>
-                        <option value="2">Albacete</option>
-                        <option value="3">Alicante</option>
-                        <option value="4">Almer&#237;a</option>
-                        <option value="33">Asturias</option>
-                        <option value="5">&#193;vila</option>
-                        <option value="6">Badajoz</option>
-                        <option value="7">Baleares</option>
-                        <option value="8">Barcelona</option>
-                        <option value="9">Burgos</option>
-                        <option value="10">C&#225;ceres</option>
-                        <option value="11">C&#225;diz</option>
-                        <option value="39">Cantabria</option>
-                        <option value="12">Castell&#243;n</option>
-                        <option value="51">Ceuta</option>
-                        <option value="13">Ciudad Real</option>
-                        <option value="14">C&#243;rdoba</option>
-                        <option value="16">Cuenca</option>
-                        <option value="99">Extranjero</option>
-                        <option value="17">Girona</option>
-                        <option value="18">Granada</option>
-                        <option value="19">Guadalajara</option>
-                        <option value="20">Guip&#250;zcoa</option>
-                        <option value="21">Huelva</option>
-                        <option value="22">Huesca</option>
-                        <option value="23">Ja&#233;n</option>
-                        <option value="26">La rioja</option>
-                        <option value="35">Las palmas</option>
-                        <option value="24">Le&#243;n</option>
-                        <option value="25">Lleida</option>
-                        <option value="27">Lugo</option>
-                        <option value="28">Madrid</option>
-                        <option value="29">M&#225;laga</option>
-                        <option value="52">Melilla</option>
-                        <option value="30">Murcia</option>
-                        <option value="31">Navarra</option>
-                        <option value="32">Ourense</option>
-                        <option value="34">Palencia</option>
-                        <option value="36">Pontevedra</option>
-                        <option value="37">Salamanca</option>
-                        <option value="38">Santa cruz de tenerife</option>
-                        <option value="40">Segovia</option>
-                        <option value="41">Sevilla</option>
-                        <option value="42">Soria</option>
-                        <option value="43">Tarragona</option>
-                        <option value="44">Teruel</option>
-                        <option value="45">Toledo</option>
-                        <option value="46">Valencia</option>
-                        <option value="47">Valladolid</option>
-                        <option value="48">Vizcaya</option>
-                        <option value="49">Zamora</option>
-                        <option value="50">Zaragoza</option>
+        <select class="form-select" id="state" formControlName="state">
+                <option selected disabled value="">Selecciona...</option>
+                <option value="A Coruña">A Coruña</option>
+                <option value="Álava">Álava</option>
+                <option value="Albacete">Albacete</option>
+                <option value="Alicante">Alicante</option>
+                <option value="Almería">Almería</option>
+                <option value="Asturias">Asturias</option>
+                <option value="Ávila">Ávila</option>
+                <option value="Badajoz">Badajoz</option>
+                <option value="Baleares">Baleares</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Burgos">Burgos</option>
+                <option value="Cáceres">Cáceres</option>
+                <option value="Cádiz">Cádiz</option>
+                <option value="Cantabria">Cantabria</option>
+                <option value="Castellón">Castellón</option>
+                <option value="Ceuta">Ceuta</option>
+                <option value="Ciudad Real">Ciudad Real</option>
+                <option value="Córdoba">Córdoba</option>
+                <option value="Cuenca">Cuenca</option>
+                <option value="Girona">Girona</option>
+                <option value="Granada">Granada</option>
+                <option value="Guadalajara">Guadalajara</option>
+                <option value="Gipuzkoa">Gipuzkoa</option>
+                <option value="Huelva">Huelva</option>
+                <option value="Huesca">Huesca</option>
+                <option value="Jaén">Jaén</option>
+                <option value="La Rioja">La Rioja</option>
+                <option value="Las Palmas">Las Palmas</option>
+                <option value="León">León</option>
+                <option value="Lleida">Lleida</option>
+                <option value="Lugo">Lugo</option>
+                <option value="Madrid">Madrid</option>
+                <option value="Málaga">Málaga</option>
+                <option value="Melilla">Melilla</option>
+                <option value="Murcia">Murcia</option>
+                <option value="Navarra">Navarra</option>
+                <option value="Ourense">Ourense</option>
+                <option value="Palencia">Palencia</option>
+                <option value="Pontevedra">Pontevedra</option>
+                <option value="Salamanca">Salamanca</option>
+                <option value="Segovia">Segovia</option>
+                <option value="Sevilla">Sevilla</option>
+                <option value="Soria">Soria</option>
+                <option value="Tarragona">Tarragona</option>
+                <option value="Tenerife">Tenerife</option>
+                <option value="Teruel">Teruel</option>
+                <option value="Toledo">Toledo</option>
+                <option value="Valencia">Valencia</option>
+                <option value="Valladolid">Valladolid</option>
+                <option value="Vizcaya/Bizkaia">Vizcaya/Bizkaia</option>
+                <option value="Zamora">Zamora</option>
+                <option value="Zaragoza">Zaragoza</option>
         </select>
         <label for="state" class="form-label">Provincia</label>
       </div>
@@ -183,11 +175,11 @@
                 formControlName="password"
                 placeholder="Debes usar mínimo 8 caracteres"
                 required
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Elge una contraseña de, al menos, 8 caracteres">
-                <button class="btn btn-primary rounded-end" 
-                      type="button" 
+                <button class="btn btn-primary rounded-end"
+                      type="button"
                       id="ShowPassword"
                       onclick="mostrarPassword()">
                   <span class="fa fa-eye-slash icon"></span>
@@ -204,11 +196,11 @@
                 formControlName="rePassword"
                 placeholder="Por favor, repite la contraseña"
                 required
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Repite la contraseña">
-                <button class="btn btn-primary rounded-end" 
-                      type="button" 
+                <button class="btn btn-primary rounded-end"
+                      type="button"
                       id="ShowRePassword"
                       onclick="mostrarRePassword()">
                   <span class="fa fa-eye-slash rIcon"></span>
@@ -225,14 +217,14 @@
       </label>
       <div class="col-12 mt-3">
         <div class="form-check form-switch">
-          <input class="form-check-input" 
-          type="checkbox" 
-          name="conditions" 
+          <input class="form-check-input"
+          type="checkbox"
+          name="conditions"
           role="switch"
-          formControlName="conditions" 
+          formControlName="conditions"
           required
-          data-bs-toggle="tooltip" 
-          data-bs-placement="left" 
+          data-bs-toggle="tooltip"
+          data-bs-placement="left"
           title="Espero que te las hayas leido">
           <label class="form-check-label" for="invalidCheck">
             Acepto las condiciones de registro.
@@ -255,8 +247,8 @@
        <button class="btn btn-success col-md-4"
               [disabled]="!valideRegister.valid || !getPassOk()"
               type="submit"
-              data-bs-toggle="tooltip" 
-              data-bs-placement="left" 
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
               title="Ahora, ya puedes registrarte pulsando el botón">
               Registro
         </button>
@@ -267,8 +259,8 @@
       <div class="col-md-12 mt-2">
         <button class="btn btn-primary col-md-4"
                 (click)="gotToLogin()"
-                data-bs-toggle="tooltip" 
-                data-bs-placement="left" 
+                data-bs-toggle="tooltip"
+                data-bs-placement="left"
                 title="Puedes volver al login, si quieres">
                 Volver a Login
         </button>
