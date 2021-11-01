@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent implements OnInit {
+export class IndexComponent {
 
   //  Propiedades de la clase
   private showLogin: boolean
@@ -17,27 +17,24 @@ export class IndexComponent implements OnInit {
     this.showRegister = false
   }
 
-  ngOnInit(): void {
-  }
-
   // getter para conocer si se muestra el login
-  public getShowLogin(): boolean {
+  getShowLogin(): boolean {
     return this.showLogin
   }
 
   //  setter para mostrar el login y ocultar el register
-  public setShowLogin(): void {
+  setShowLogin(): void {
     this.showRegister = false
     this.showLogin = !this.showLogin
   }
 
   // getter para conocer si se muestra el register
-  public getShowRegister(): boolean {
+  getShowRegister(): boolean {
     return this.showRegister
   }
 
  //  setter para mostrar el register y ocultar el login
-  public setShowRegister(): void {
+  setShowRegister(): void {
     this.showLogin = false
     this.showRegister = !this.showRegister
   }

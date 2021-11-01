@@ -1,6 +1,6 @@
 import { IndexComponent } from '../../pages/index/index.component';
 import { LoginForm } from 'src/app/models/loginForm';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 

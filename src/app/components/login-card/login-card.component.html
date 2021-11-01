@@ -20,24 +20,22 @@
       name="loginForm"
       [formGroup]="valideLogin"
       (ngSubmit)="this.sendLogin()">
-      <div class="col-md-12">
-        <div class="input-group mt-3 form-floating">
-          <input class="form-control col-md-4"
-                type="email"
-                name="email"
-                formControlName="email"
-                placeholder="Dirección de correo"
-                required
-                data-bs-toggle="tooltip"
-                data-bs-placement="left"
-                title="Introduce el email con el que te registraste">
-          <label for="email"
-                class="form-label">Dirección de correo</label>
-          <span class="input-group-text"id="email">@</span>
-        </div>
+      <div class="input-group mt-3 form-floating">
+        <input class="form-control rounded-start"
+              type="email"
+              id="email"
+              formControlName="email"
+              placeholder="Dirección de correo"
+              required
+              data-bs-toggle="tooltip"
+              data-bs-placement="left"
+              title="Introduce el email con el que te registraste">
+        <label for="email"
+              class="form-label ms-2">Dirección de correo</label>
+        <span class="input-group-text"id="email">@</span>
       </div>
-      <div class="input-group col-md-12 mt-3 form-floating">
-        <input class="form-control"
+      <div class="input-group mt-3 form-floating">
+        <input class="form-control rounded-start"
               type="password"
               id="loginPassword"
               formControlName="password"

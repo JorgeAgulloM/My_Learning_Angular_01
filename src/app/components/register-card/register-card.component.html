@@ -167,7 +167,7 @@
         <label for="state" class="form-label">Provincia</label>
       </div>
       <div class="col-6">
-        <div class="input-group  mt-3 form-floating">
+        <div class="input-group mt-3 form-floating">
           <input class="form-control rounded-start"
                 type="password"
                 id="password"
@@ -208,13 +208,15 @@
           <label for="rePassword" class="form-label ms-2">Repita la contraseña</label>
         </div>
       </div>
-      <label class="fomr-label alert alert-danger col-md-12"
+      <div class="col-12">
+        <label class="fomr-label alert alert-danger col-md-12"
            *ngIf="!getPassOk()"
             for="ok"
             rol="alert">
             Los campos de constraseña no coinciden o no son válidos. La contraseña debe contener, al menos, 8
             caracteres.
       </label>
+      </div>
       <div class="col-12 mt-3">
         <div class="form-check form-switch">
           <input class="form-check-input"
@@ -233,19 +235,19 @@
       </div>
       <div class="col-12">
         <label class="form-label alert alert-warning col-md-12"
-              *ngIf="!valideRegister.valid"
+              *ngIf="!valideRegister.valid || !getPassOk() || !getEmailOk()"
               for="error"
               role="alert">
               Por favor, cumplimente correctamente todos los campos para contiuar.
        </label>
         <label class="fomr-label alert alert-success col-md-12"
-             *ngIf="valideRegister.valid && getPassOk()"
+             *ngIf="valideRegister.valid && getPassOk() && getEmailOk()"
               for="ok"
               rol="alert">
               Ya puede pulsar el botón Registro para continuar. Gracias.
        </label>
        <button class="btn btn-success col-md-4"
-              [disabled]="!valideRegister.valid || !getPassOk()"
+              [disabled]="!valideRegister.valid || !getPassOk() || !getEmailOk()"
               type="submit"
               data-bs-toggle="tooltip"
               data-bs-placement="left"

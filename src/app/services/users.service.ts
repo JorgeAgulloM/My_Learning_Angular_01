@@ -9,11 +9,13 @@ export class UsersService {
 
   //  Propiedad de la clase
   private registerUser = new Array<RegisterForm>()
+  private userLoged: boolean
 
   //  Se inicia el router en el constructor
   constructor(
     private routing: Router
     ) {
+    this.userLoged = false
       //  Se crea un usuario inicial para poder acceder a login
     this.registerUser.push(new RegisterForm(
         "Jorge",
@@ -27,15 +29,14 @@ export class UsersService {
         "12345678",
         "12345678",
         true)
-
       )
     }
 
-      /* Función para saber datos de login del usuario.
+      /* Función para comparar los datos de login del usuario.
       Los número negativos representas estados fallidos, del 0 en adelante referencia la posición en el
       array de datos.
       */
-  queryUserRegitered(email: string, pass: string): number {
+  private queryUserRegitered(email: string, pass: string): number {
     let result: number = -3 //Error en la lectura del Array, Se modifica si las siguientes condiciones se realizan
 
     //  Comprueba los elementos del registro para saber si existe el usuaio y su comparar su clave.
@@ -74,6 +75,7 @@ export class UsersService {
         alert("Error en la consulta.")
         break
       default:{ //  Se navega hasta home y se pasa el "id" o email de usuario registrado
+        this.userLoged = true
         this.routing.navigate(['./home', this.registerUser[result].get_email()])
         break
       }
@@ -102,7 +104,7 @@ export class UsersService {
 
         // navega a home y pasa el id de usuario
         this.routing.navigate(['./home', this.registerUser[this.registerUser.length -1].get_email()])
-
+        this.userLoged = true
     } else {
 
       // informa de la coincidencia
@@ -110,9 +112,21 @@ export class UsersService {
     }
   }
 
-  //  Busca a un usuario registrado
+  getRegisterUsers(): Array<RegisterForm>{
+    return this.registerUser
+  }
+
+  //  Devuelve a un usuario registrado
   getRegisterUser(email: string): RegisterForm {
     return this.registerUser.filter(x => x.get_email() == email)[0]
+  }
+
+  getUserLoged(): boolean {
+    return this.userLoged
+  }
+
+  setUserLoged(value: boolean): void {
+    this.userLoged = value
   }
 
 }
